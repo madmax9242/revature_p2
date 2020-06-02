@@ -11,7 +11,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-10 col-xl-7 mx-auto">
-							<h3 class="display-4">Login</h3>
+							<h3 class="display-4">Sign In</h3>
 							<form>
 								<!-- INPUT FIELDS -->
 								<div class="form-group mb-3">
@@ -26,7 +26,7 @@
 								</div>
 
 								<!-- BUTTONS -->
-								<button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" type="submit">Sign In</button>
+								<button (click)="checkCredentials()" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" type="submit">Sign In</button>
 								<div class="text-center d-flex justify-content-between mt-4">
 									<p>
 										New User? <a href="https://www.google.com" class="font-italic text-muted">Register</a>
