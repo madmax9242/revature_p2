@@ -22,11 +22,12 @@ export class RegisterComponent implements OnInit {
 	onSubmit() {
 		console.log("Register submit button pressed.");
 
-		let email = document.getElementById("inputEmail").value;
-		let password = document.getElementById("inputPassword").value;
-		let firstName = document.getElementById("inputFirstName").value;
-		let lastName = document.getElementById("inputLastName").value;
-		let contact = document.getElementById("inputContact").value;
+		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+		let password = (<HTMLInputElement>document.getElementById("inputPasswrod")).value;
+		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
+		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
+		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
+		
 		let user = new User(email, password, firstName, lastName, Number(contact));
 
 		console.log(user);
