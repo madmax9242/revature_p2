@@ -1,9 +1,6 @@
 package com.gatherup.dao;
 import java.util.List;
-
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,63 +10,43 @@ import com.gatherup.model.Person;
 @Repository("personRepo")
 public class PersonRepo {
 
-	private SessionFactory sesFact;
+	private SessionFactory sessionFactory;
 	
 	@Autowired
-	public PersonRepo(SessionFactory sesFact) {
-		this.sesFact = sesFact;
+	public PersonRepo(SessionFactory inSessionFactory) {
+		this.sessionFactory = inSessionFactory;
 	}
 	
 	@Transactional
 	public List<Person> selectAll(){
-
-		Session ses = sesFact.openSession();
-		
-		List<Person> planetList = ses.createQuery("from Planet",Person.class).list();
-		
-		ses.close();
-		
-		return planetList;
+		List<Person> personList = sessionFactory.getCurrentSession().createQuery("from Person", Person.class).list();
+		return personList;
 		
 	}
 	
-	public Person selectByUserId(int id) {
-		Person p = null;
+	public Person selectByUserId(int inId) {
+		Person person = sessionFactory.getCurrentSession().get(Person.class, inId);
 		
-		return p;
+		return person;
 	}
 	
 	@Transactional
-	public void insert(Person p) {
+	public void insert(Person inPerson) {
 		
-		Session ses = sesFact.openSession();
-		Transaction tx = ses.beginTransaction();
-		
-		ses.save(p);
-		
-		tx.commit();
-		ses.close();
-		
+		sessionFactory.getCurrentSession().save(inPerson);
 	}
 	
 	@Transactional
-	public void delete(Person p) {
+	public void delete(Person inPerson) {
 		
-//		Session ses = sesFact.openSession();
-//		Transaction tx = ses.beginTransaction();
-//		
-//		ses.delete(p);
-//		
-//		tx.commit();
-//		ses.close();
 		
-		sesFact.getCurrentSession().delete(p); //Using contextual sessions
+		sessionFactory.getCurrentSession().delete(inPerson); //Using contextual sessions
 		
 	}
 	
-	public void update(Person p) {
+	public void update(Person inPerson) {
 		
-		
+		sessionFactory.getCurrentSession().update(inPerson);
 		
 	}
 
