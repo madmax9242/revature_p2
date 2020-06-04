@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../class/user/user';
 
 @Component({
 	selector: 'app-login',
@@ -13,15 +14,20 @@ export class LoginComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	// checkCredentials(): boolean {
-	//   console.log(document.getElementById("inputEmail").textContent);
-	//
-	//   if (document.getElementById("inputEmail").textContent === "hello@world.com") {
-	//     console.log("Hello World");
-	//     return true;
-	//   } else {
-	//     console.log("Not working, friend");
-	//     return false;
-	//   }
-	// }
+	user = new User(null, null, null, null, null);
+
+	onSubmit() {
+		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+		let user = new User(email, password, null, null, null);
+
+		if (user.email == "hello@world.com" && user.password == "p4ssw0rd") {
+			console.log("Login success.");
+			window.location.href = "/profile";
+		} else {
+			console.log("Invalid credentials.");
+			window.location.href = "https://www.google.com";
+		}
+		console.log(user);
+	}
 }
