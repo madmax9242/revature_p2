@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	rootTitle = 'Project 2: MeetUp Clone';
+	title: 'Project 2: GatherUp';
 }

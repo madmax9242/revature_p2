@@ -12,29 +12,30 @@
 					<div class="row">
 						<div class="col-lg-10 col-xl-7 mx-auto">
 							<h3 class="display-4">Register</h3>
+							<!-- The variable registerForm is a reference to the NgForm directive that governs the form as a whole -->
 							<form>
 								<!-- INPUT FIELDS -->
 								<div class="form-group mb-3">
-									<input id="inputEmail" type="email" placeholder="Email address" class="form-control rounded-pill border-0 shadow-sm px-4" required autofocus>
+									<input [(ngModel)]="email" name="inputEmail" id="inputEmail" type="email" placeholder="Email address" class="form-control rounded-pill border-0 shadow-sm px-4" required autofocus>
 								</div>
 								<div class="form-group mb-3">
-									<input id="inputPassword" type="password" placeholder="Password" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
+									<input [(ngModel)]="password" name="inputPassword" id="inputPassword" type="password" placeholder="Password" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
 								</div>
 								<div class="form-group mb-3">
-									<input id="inputUsername" type="text" placeholder="Username" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
+									<input [(ngModel)]="firstName" name="inputFirstName" id="inputFirstName" type="text" placeholder="First name" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
 								</div>
 								<div class="form-group mb-3">
-									<input id="inputName" type="text" placeholder="Name" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
+									<input [(ngModel)]="lastName" name="inputLastName" id="inputLastName" type="text" placeholder="Last name" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
 								</div>
 								<div class="form-group mb-3">
-									<input id="inputContact" type="number" placeholder="Phone number" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
+									<input [(ngModel)]="contact" name="inputContact" id="inputContact" type="number" placeholder="Phone number" class="form-control rounded-pill border-0 shadow-sm px-4 text-secondary" required>
 								</div>
 
 								<!-- BUTTONS -->
-								<button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" type="submit">Sign Up</button>
+								<button (click)="onSubmit()" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" type="submit">Sign Up</button>
 								<div class="text-center d-flex justify-content-between mt-4">
 									<p>
-										Have an account? <a href="https://www.google.com" class="font-italic text-muted">Login</a>
+										Have an account? <a href="/login" class="font-italic text-muted">Login</a>
 									</p>
 								</div>
 							</form>

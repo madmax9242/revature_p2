@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // provides access to all template-driven form features, including ngModel
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +23,6 @@ import { RouterModule } from '@angular/router';
 		BrowserModule,
 		FormsModule,
 		AppRoutingModule,
-
 		RouterModule.forRoot([
 			{ path: 'login', component: LoginComponent },
 			{ path: 'register', component: RegisterComponent },
@@ -34,4 +33,5 @@ import { RouterModule } from '@angular/router';
 	providers: [],
 	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
