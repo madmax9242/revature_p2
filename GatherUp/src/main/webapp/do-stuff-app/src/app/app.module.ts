@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // provides access to all template-driven form features, including ngModel
+import { FormsModule } from '@angular/forms'; // provides access to all template-driven form features
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

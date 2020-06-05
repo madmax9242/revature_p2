@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { User } from "../class/user/user"; // imports our User class
+import { User } from '../class/user/user'; // imports our User class
 
 /* 
 	This component maps input values to a JavaScript object and passes it to Java via Angular's HttpClient
@@ -18,8 +17,8 @@ export class RegisterComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	// Angular yells if you remove this..
-	user = new User(null, null, null, null, null);
+	// Dummy user obj thats assigned fields via two-way binding; used for CONSTRUCTING A USER OBJECT
+	user: any = {};
 
 	onSubmit() {
 		console.log("Register submit button pressed.");
@@ -29,10 +28,11 @@ export class RegisterComponent implements OnInit {
 		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
 		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
 		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
-		let user = new User(email, password, firstName, lastName, Number(contact));
+		this.user = new User(email, password, firstName, lastName, Number(contact));
 
-		// TODO: use HttpClient to send this user to server.
-		console.log("New user created.");
-		console.log(user);
+		// Sanity check
+		console.log(this.user);
+
+		// TODO: do things with this constructed user object; use Angular's HttpClient to send to server.
 	}
 }
