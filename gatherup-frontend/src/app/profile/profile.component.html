@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="card">
+		<div class="card-body">
+			<!-- PROFILE PICTURE -->
+			<img id="profilePicture" src="https://i.pinimg.com/736x/56/78/4d/56784dfcc624e322c04e1037ba83ae09.jpg" alt="Profile Pic">
+
+			<br>
+			<br>
+
+			<!-- NAME AND TITLE -->
+			<h5 class="card-title">Mark Zuckerberg</h5>
+			<h6 class="card-subtitle text-muted">Facebook CEO</h6>
+
+			<br>
+
+			<!-- ACCOUNT INFORMATION -->
+			<div class="text-left">
+				<p>ID: {{character?.id}}</p>
+				<p>Name: {{character?.name}}</p>
+				<p>Status: {{character?.status}}</p>
+				<p>Species: {{character?.species}}</p>
+				<p>Type: {{character?.type}}</p>
+				<p>Gender: {{character?.gender}}</p>
+				<p>Origin: {{character?.origin}}</p>
+				<p>Location: {{character?.location}}</p>
+				<p>Image: {{character?.image}}</p>
+				<p>URL: {{character?.url}}</p>
+				<p>Created: {{character?.created}}</p>
+			</div>
+
+			<br>
+
+			<!-- BUTTONS -->
+			<div>
+				<button (click)="getTest()" class="btn btn-warning btn-block" type="button">Clicky</button>
+			</div>
+		</div>
+	</div>
+</div>
