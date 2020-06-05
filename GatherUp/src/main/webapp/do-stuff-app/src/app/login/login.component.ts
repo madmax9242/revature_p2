@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../class/user/user'; // imports our User class
-import { ConfigService, ChuckNorris } from '../service/config.service'; // imports ConfigService which contains Http functionality
 
 @Component({
 	selector: 'app-login',
@@ -9,7 +8,7 @@ import { ConfigService, ChuckNorris } from '../service/config.service'; // impor
 })
 export class LoginComponent implements OnInit {
 
-	constructor(private configService: ConfigService) {
+	constructor() {
 	}
 
 	ngOnInit(): void {
@@ -35,14 +34,5 @@ export class LoginComponent implements OnInit {
 		} else {
 			alert("Invalid credentials!")
 		}
-	}
-
-	// TESTING THINGS
-	joke: ChuckNorris;
-
-	getTest() {
-		this.configService.getChuck().subscribe((data: ChuckNorris) => {
-			this.joke = data;
-		})
 	}
 }

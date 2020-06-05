@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EventComponent } from './event/event.component';
+import { ConfigService } from './service/config.service';
 
 // ROOT MODULE
 @NgModule({
@@ -32,7 +33,7 @@ import { EventComponent } from './event/event.component';
 			{ path: 'event', component: EventComponent },
 		])
 	],
-	providers: [],
+	providers: [ConfigService], // make providers global
 	bootstrap: [AppComponent]
 })
 export class AppModule {
