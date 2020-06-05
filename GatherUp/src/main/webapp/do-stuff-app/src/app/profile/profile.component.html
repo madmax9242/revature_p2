@@ -15,18 +15,24 @@
 
 			<!-- ACCOUNT INFORMATION -->
 			<div class="text-left">
-				<p><b>Email: </b>mzucc@facebook.com</p>
-				<p><b>Username: </b>therealmark123</p>
-				<p><b>Username: </b>mZucc</p>
-				<p><b>Phone Number: </b>(123) 456-7890</p>
+				<p>{{character?.id}}</p>
+				<p>{{character?.name}}</p>
+				<p>{{character?.status}}</p>
+				<p>{{character?.species}}</p>
+				<p>{{character?.type}}</p>
+				<p>{{character?.gender}}</p>
+				<p>{{character?.origin}}</p>
+				<p>{{character?.location}}</p>
+				<p>{{character?.image}}</p>
+				<p>{{character?.url}}</p>
+				<p>{{character?.created}}</p>
 			</div>
 
 			<br>
 
 			<!-- BUTTONS -->
 			<div>
-				<button class="btn btn-success btn-block text-uppercase mb-2 rounded-pill scd reva	hadow-sm" type="button">Clicky One</button>
-				<button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" type="button">Clicky Two</button>
+				<button (click)="getTest()" type="button">Clicky</button>
 			</div>
 		</div>
 	</div>

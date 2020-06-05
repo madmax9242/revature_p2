@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ConfigService {
 
-	// Injects HttpClient upon class-creation
+	// Injects HttpClient upon ConfigService creation
 	constructor(private http: HttpClient) { }
 
 	// options configures various aspects of an outgoing request
@@ -21,17 +21,25 @@ export class ConfigService {
 		withCredentials?: boolean
 	}
 
-	private chuckUrl = 'https://api.chucknorris.io/jokes/random';
-
-	getChuck() {
-		return this.http.get<ChuckNorris>(this.chuckUrl)
+	// API TESTING (https://rickandmortyapi.com/documentation#character)
+	private url = 'https://rickandmortyapi.com/api/character/1';
+	getRickMorty() {
+		return this.http.get<RickMorty>(this.url)
 	}
 }
 
-export interface ChuckNorris {
-	"category": any;
-	"icon_url": string;
-	"id": string;
+// API TESTING
+export interface RickMorty {
+	"id": number;
+	"name": string;
+	"status": string;
+	"species": string;
+	"type": string;
+	"gender": string;
+	"origin": object;
+	"location": object;
+	"image": string;
+	"episode": Array<RickMorty>;
 	"url": string;
-	"value": string;
+	"created": string;
 }
