@@ -2,37 +2,27 @@
 	<div class="card">
 		<div class="card-body">
 			<!-- PROFILE PICTURE -->
-			<img id="profilePicture" src="https://i.pinimg.com/736x/56/78/4d/56784dfcc624e322c04e1037ba83ae09.jpg" alt="Profile Pic">
+			<img src="{{character?.image}}" class="container">
 
 			<br>
 			<br>
 
 			<!-- NAME AND TITLE -->
-			<h5 class="card-title">Mark Zuckerberg</h5>
-			<h6 class="card-subtitle text-muted">Facebook CEO</h6>
+			<h5 *ngIf="character" class="card-title">ID: {{character?.id}}</h5>
+			<h6 *ngIf="character" class="card-subtitle text-muted">Name: {{character?.name}}</h6>
 
 			<br>
 
-			<!-- ACCOUNT INFORMATION -->
+			<!-- INFORMATION -->
 			<div class="text-left">
-				<p>ID: {{character?.id}}</p>
-				<p>Name: {{character?.name}}</p>
-				<p>Status: {{character?.status}}</p>
-				<p>Species: {{character?.species}}</p>
-				<p>Type: {{character?.type}}</p>
-				<p>Gender: {{character?.gender}}</p>
-				<p>Origin: {{character?.origin}}</p>
-				<p>Location: {{character?.location}}</p>
-				<p>Image: {{character?.image}}</p>
-				<p>URL: {{character?.url}}</p>
-				<p>Created: {{character?.created}}</p>
+				<p *ngIf="character">Status: {{character?.status}}</p>
+				<p *ngIf="character">Species: {{character?.species}}</p>
+				<p *ngIf="character">Gender: {{character?.gender}}</p>
 			</div>
-
-			<br>
-
-			<!-- BUTTONS -->
 			<div>
-				<button (click)="getTest()" class="btn btn-warning btn-block" type="button">Clicky</button>
+				<label *ngIf="!character" class="text-center">Enter number from 1 - 591</label>
+				<input class="form-control" type="number" [(ngModel)]="id">
+				<button (click)="getCharacter()" class="btn btn-warning btn-block" type="submit">Clicky</button>
 			</div>
 		</div>
 	</div>

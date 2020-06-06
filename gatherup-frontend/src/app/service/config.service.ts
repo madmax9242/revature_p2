@@ -8,23 +8,15 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ConfigService {
 
-	// Injects HttpClient upon ConfigService creation
 	constructor(private http: HttpClient) { }
 
-	// options configures various aspects of an outgoing request
-	options: {
-		headers?: HttpHeaders | { [header: string]: string | string[] },
-		observe?: "body" | "events" | "response", // specifies how much of the response to return
-		params?: HttpParams | { [param: string]: string | string[] },
-		reportProgress?: boolean,
-		responseType?: "arraybuffer" | "blob" | "json" | "text", // specifies the format in which to return data
-		withCredentials?: boolean
-	}
-
 	// API TESTING (https://rickandmortyapi.com/documentation#character)
-	private url = 'https://rickandmortyapi.com/api/character/1';
-	getRickMorty() {
-		return this.http.get<RickMorty>(this.url)
+	private baseUrl: string;
+	setUrl(id: number) {
+		this.baseUrl = `https://rickandmortyapi.com/api/character/${id}`;
+	}
+	getRickMorty(): Observable<RickMorty> {
+		return this.http.get<RickMorty>(this.baseUrl)
 	}
 }
 

@@ -15,10 +15,18 @@ export class ProfileComponent implements OnInit {
 	}
 
 	// API TESTING
-	character: RickMorty; // maps to RickMorty interface schema
-	getTest() {
-		this.configService.getRickMorty().subscribe((data: RickMorty) => {
-			this.character = data;
-		})
+	character: RickMorty; // maps to RickMorty interface schema defined in ConfigService
+	id: number;
+
+	getCharacter() {
+		if (this.id == undefined || this.id > 591) {
+			console.log("Invalid or missing ID");
+		} else {
+			this.configService.setUrl(this.id);
+
+			this.configService.getRickMorty().subscribe((data: RickMorty) => {
+				this.character = data;
+			})
+		}
 	}
 }

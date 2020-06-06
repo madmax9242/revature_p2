@@ -1,13 +1,16 @@
 export class User {
 
-	constructor(
-		public email: string,
-		public password: string,
-		public firstName: string,
-		public lastName: string,
-		public contact: number
-	) { }
+	email: string;
+	password: string;
+	firstName: string;
+	lastName: string;
+	contact: number;
 
-	// create new user like this:
-	// myUser = new User("hello@world.com", "p4ssw0rd", "John", "Doe", 1234567890);
+	constructor(email: string, password: string, firstName: string, lastName: string, contact: number) {
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.contact = contact;
+	}
 }
