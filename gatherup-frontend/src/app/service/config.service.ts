@@ -2,29 +2,67 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; // HttpClient makes use of observables for all transactions
 import { catchError, retry } from 'rxjs/operators';
+import { User } from '../class/user/user';
 
+/*
+	This service uses HttpClient to implement CRUD operations for components to use
+*/
 @Injectable({
 	providedIn: 'root'
 })
 export class ConfigService {
 
-	// Injects HttpClient upon ConfigService creation
-	constructor(private http: HttpClient) { }
+	private baseUrl: string;
 
-	// options configures various aspects of an outgoing request
-	options: {
-		headers?: HttpHeaders | { [header: string]: string | string[] },
-		observe?: "body" | "events" | "response", // specifies how much of the response to return
-		params?: HttpParams | { [param: string]: string | string[] },
-		reportProgress?: boolean,
-		responseType?: "arraybuffer" | "blob" | "json" | "text", // specifies the format in which to return data
-		withCredentials?: boolean
+	constructor(private http: HttpClient) {
+		this.baseUrl = "localhost:9999/"; // bootstraps baseUrl to the "home" endpoint
 	}
 
+	// READ
+	public getAllUsers(): Observable<User[]> {
+		return this.http.get<User[]>(this.baseUrl + "user/all"); // localhost:9999/user/all
+	}
+
+	public getUserById(id: number): Observable<User> {
+		return this.http.get<User>(this.baseUrl + "user/" + id); // localhost:9999/user/{id}
+	}
+
+	public getUserByEmail(email: string): Observable<User> {
+		return this.http.get<User>(this.baseUrl + "user/email/" + email); // localhost:9999/user/email/{email}
+	}
+
+	// CREATE
+	public createUser(user: User) {
+		return this.http.post<User>(this.baseUrl + "user", user); // localhost:9999/user
+	}
+
+	// UPDATE
+	public updateUser(user: User) {
+		return this.http.put<User>(this.baseUrl + "user", user); // localhost:9999/user
+	}
+
+	// DELETE
+	public deleteUserById(id: number) {
+		return this.http.delete<User>(this.baseUrl + "/user/delete/" + id) // localhost:9999/user/delete/{id}
+	}
+
+
+
+
+
+
+
+
+
+
+
 	// API TESTING (https://rickandmortyapi.com/documentation#character)
-	private url = 'https://rickandmortyapi.com/api/character/1';
-	getRickMorty() {
-		return this.http.get<RickMorty>(this.url)
+	private rmUrl: string;
+	setUrl(id: number) {
+		this.rmUrl = `https://rickandmortyapi.com/api/character/${id}`;
+	}
+	getRickMorty(): Observable<RickMorty> {
+		return this.http.get<RickMorty>(this.rmUrl)
 	}
 }
 
