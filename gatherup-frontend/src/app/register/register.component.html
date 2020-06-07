@@ -57,7 +57,13 @@
 
 								<!-- BUTTONS -->
 								<div>
-									<button (click)="onSubmit()" class="btn btn-primary btn-block text-uppercase rounded-pill border-0 shadow mt-4" type="submit">Sign Up</button>
+									<button (click)="createUser()" class="btn btn-primary btn-block text-uppercase rounded-pill border-0 shadow mt-4" type="submit">Sign Up</button>
+									<button (click)="getAllUsers()" class="btn btn-primary btn-block text-uppercase rounded-pill border-0 shadow mt-4" type="button">Get All Users</button>
+									<p>{{user.email}}</p>
+									<p>{{user.password}}</p>
+									<p>{{user.firstName}}</p>
+									<p>{{user.lastName}}</p>
+									<p>{{user.contact}}</p>
 								</div>
 
 								<!-- ROUTING -->

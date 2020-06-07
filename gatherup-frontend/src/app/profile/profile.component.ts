@@ -8,7 +8,7 @@ import { ConfigService, RickMorty } from '../service/config.service';
 })
 export class ProfileComponent implements OnInit {
 
-	constructor(private configService: ConfigService) {
+	constructor(private service: ConfigService) {
 	}
 
 	ngOnInit(): void {
@@ -22,9 +22,9 @@ export class ProfileComponent implements OnInit {
 		if (this.id == undefined || this.id > 591) {
 			console.log("Invalid or missing ID");
 		} else {
-			this.configService.setUrl(this.id);
+			this.service.setUrl(this.id);
 
-			this.configService.getRickMorty().subscribe((data: RickMorty) => {
+			this.service.getRickMorty().subscribe((data: RickMorty) => {
 				this.character = data;
 			})
 		}
