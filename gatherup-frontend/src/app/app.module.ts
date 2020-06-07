@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // enables form features for app
 import { HttpClientModule } from '@angular/common/http'; // enables HTTP functionality for app
 import { AppRoutingModule } from './app-routing.module'; // enables routing functionality for app
-import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';

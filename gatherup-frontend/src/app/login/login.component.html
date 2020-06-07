@@ -16,14 +16,12 @@
 								<!-- INPUT FIELDS -->
 								<div class="form-group">
 									<input [(ngModel)]="user.email" #email="ngModel" name="inputEmail" id="inputEmail" type="email" placeholder="Email address" class="form-control rounded-pill border-0 shadow my-3 px-4" required>
-									{{"TODO: delete me - " + user.email}}
 									<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1">
 										<div *ngIf="email.errors.required">Email is required!</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<input [(ngModel)]="user.password" #password="ngModel" name="inputPassword" id="inputPassword" type="password" placeholder="Password" class="form-control rounded-pill border-0 shadow my-3 px-4" required>
-									{{"TODO: delete me - " + user.password}}
 									<div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1">
 										<div *ngIf="password.errors.required">
 											Password is required!
@@ -32,7 +30,7 @@
 								</div>
 
 								<!-- BUTTONS -->
-								<button (click)="onSubmit()" class="btn btn-primary btn-block text-uppercase rounded-pill border-0 shadow mt-4" type="submit">Sign In</button>
+								<button (click)="login()" class="btn btn-primary btn-block text-uppercase rounded-pill border-0 shadow mt-4" type="submit">Sign In</button>
 
 								<!-- ROUTING -->
 								<div class="text-center justify-content-between mt-4">

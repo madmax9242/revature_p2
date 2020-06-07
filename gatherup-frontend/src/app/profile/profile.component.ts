@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService, RickMorty } from '../service/config.service';
+import { User } from '../class/user/user';
 
 @Component({
 	selector: 'app-profile',
@@ -8,25 +9,13 @@ import { ConfigService, RickMorty } from '../service/config.service';
 })
 export class ProfileComponent implements OnInit {
 
+	user: User[];
+
 	constructor(private service: ConfigService) {
 	}
 
 	ngOnInit(): void {
-	}
-
-	// API TESTING
-	character: RickMorty; // maps to RickMorty interface schema defined in ConfigService
-	id: number;
-
-	getCharacter() {
-		if (this.id == undefined || this.id > 591) {
-			console.log("Invalid or missing ID");
-		} else {
-			this.service.setUrl(this.id);
-
-			this.service.getRickMorty().subscribe((data: RickMorty) => {
-				this.character = data;
-			})
-		}
+		// UPON INITIALIZATION, fetches all user from response and inserts into user array
+		this.service.getUser().subscribe(data => { this.user = data; });
 	}
 }

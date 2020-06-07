@@ -1,28 +1,20 @@
 <div class="container">
 	<div class="card">
 		<div class="card-body">
-			<!-- PROFILE PICTURE -->
-			<img src="{{character?.image}}" class="container">
-
-			<br>
-			<br>
-
-			<!-- NAME AND TITLE -->
-			<h5 *ngIf="character" class="card-title">ID: {{character?.id}}</h5>
-			<h6 *ngIf="character" class="card-subtitle text-muted">Name: {{character?.name}}</h6>
-
-			<br>
-
 			<!-- INFORMATION -->
 			<div class="text-left">
-				<p *ngIf="character">Status: {{character?.status}}</p>
-				<p *ngIf="character">Species: {{character?.species}}</p>
-				<p *ngIf="character">Gender: {{character?.gender}}</p>
-			</div>
-			<div>
-				<label *ngIf="!character" class="text-center">Enter number from 1 - 591</label>
-				<input class="form-control" type="number" [(ngModel)]="id">
-				<button (click)="getCharacter()" class="btn btn-warning btn-block" type="submit">Clicky</button>
+				<div *ngFor="let user of user">
+					<p>Email: {{user?.email}}</p>
+					<p>Password: {{user?.password}}</p>
+					<p>First Name: {{user?.firstName}}</p>
+					<p>Last Name: {{user?.lastName}}</p>
+					<p>Contact: {{user?.contact}}</p>
+
+					<br>
+
+					<!-- Note: to print response as JSON, use the built in json pipe -->
+					<p>User: {{user | json}}</p>
+				</div>
 			</div>
 		</div>
 	</div>
