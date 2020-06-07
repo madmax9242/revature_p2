@@ -1,0 +1,50 @@
+<div class="container-fluid">
+	<div class="row no-gutter">
+		<!-- LEFT HALF -->
+		<div class="col-md-6 d-none d-md-flex bg-image"></div>
+
+		<!-- RIGHT HALF -->
+		<div class="col-md-6 bg-light">
+			<div class="login d-flex align-items-center">
+
+				<!-- LOGIN-->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-xl-8 mx-auto">
+							<h3 class="display-4">Login</h3>
+							<form>
+								<!-- INPUT FIELDS -->
+								<div class="form-group">
+									<input [(ngModel)]="user.email" #email="ngModel" name="inputEmail" id="inputEmail" type="email" placeholder="Email address" class="form-control rounded-pill border-0 shadow my-3 px-4" required>
+									{{"TODO: delete me - " + user.email}}
+									<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1">
+										<div *ngIf="email.errors.required">Email is required!</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<input [(ngModel)]="user.password" #password="ngModel" name="inputPassword" id="inputPassword" type="password" placeholder="Password" class="form-control rounded-pill border-0 shadow my-3 px-4" required>
+									{{"TODO: delete me - " + user.password}}
+									<div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1">
+										<div *ngIf="password.errors.required">
+											Password is required!
+										</div>
+									</div>
+								</div>
+
+								<!-- BUTTONS -->
+								<button (click)="onSubmit()" class="btn btn-primary btn-block text-uppercase rounded-pill border-0 shadow mt-4" type="submit">Sign In</button>
+
+								<!-- ROUTING -->
+								<div class="text-center justify-content-between mt-4">
+									<p>
+										New user? <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="font-italic text-muted">Register</a>
+									</p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
