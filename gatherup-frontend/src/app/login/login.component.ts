@@ -20,20 +20,20 @@ export class LoginComponent implements OnInit {
 	onSubmit() {
 		console.log("Login submit button pressed.");
 
-		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
-		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		this.user = new User(email, password, null, null, 0);
+		// let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+		// let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+		// this.user = new User(email, password, null, null, 0);
 
-		// Sanity check
-		console.log(this.user);
+		// // Sanity check
+		// console.log(this.user);
 
-		// Validates against hard-coded credentials
-		if (email == "hello@world.com" && password == "p4ssw0rd") {
-			alert('Login success!\n\n' + JSON.stringify(this.user, null, 4));
-			location.href = "/profile"; // routes accordingly
-		} else {
-			alert("Invalid credentials!")
-		}
+		// // Validates against hard-coded credentials
+		// if (email == "hello@world.com" && password == "p4ssw0rd") {
+		// 	alert('Login success!\n\n' + JSON.stringify(this.user, null, 4));
+		// 	location.href = "/profile"; // routes accordingly
+		// } else {
+		// 	alert("Invalid credentials!")
+		// }
 
 		// TODO: validate against database credentials
 	}

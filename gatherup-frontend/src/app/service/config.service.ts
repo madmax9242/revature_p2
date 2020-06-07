@@ -2,21 +2,67 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; // HttpClient makes use of observables for all transactions
 import { catchError, retry } from 'rxjs/operators';
+import { User } from '../class/user/user';
 
+/*
+	This service uses HttpClient to implement CRUD operations for components to use
+*/
 @Injectable({
 	providedIn: 'root'
 })
 export class ConfigService {
 
-	constructor(private http: HttpClient) { }
+	private baseUrl: string;
+
+	constructor(private http: HttpClient) {
+		this.baseUrl = "localhost:9999/"; // bootstraps baseUrl to the "home" endpoint
+	}
+
+	// READ
+	public getAllUsers(): Observable<User[]> {
+		return this.http.get<User[]>(this.baseUrl + "user/all"); // localhost:9999/user/all
+	}
+
+	public getUserById(id: number): Observable<User> {
+		return this.http.get<User>(this.baseUrl + "user/" + id); // localhost:9999/user/{id}
+	}
+
+	public getUserByEmail(email: string): Observable<User> {
+		return this.http.get<User>(this.baseUrl + "user/email/" + email); // localhost:9999/user/email/{email}
+	}
+
+	// CREATE
+	public createUser(user: User) {
+		return this.http.post<User>(this.baseUrl + "user", user); // localhost:9999/user
+	}
+
+	// UPDATE
+	public updateUser(user: User) {
+		return this.http.put<User>(this.baseUrl + "user", user); // localhost:9999/user
+	}
+
+	// DELETE
+	public deleteUserById(id: number) {
+		return this.http.delete<User>(this.baseUrl + "/user/delete/" + id) // localhost:9999/user/delete/{id}
+	}
+
+
+
+
+
+
+
+
+
+
 
 	// API TESTING (https://rickandmortyapi.com/documentation#character)
-	private baseUrl: string;
+	private rmUrl: string;
 	setUrl(id: number) {
-		this.baseUrl = `https://rickandmortyapi.com/api/character/${id}`;
+		this.rmUrl = `https://rickandmortyapi.com/api/character/${id}`;
 	}
 	getRickMorty(): Observable<RickMorty> {
-		return this.http.get<RickMorty>(this.baseUrl)
+		return this.http.get<RickMorty>(this.rmUrl)
 	}
 }
 

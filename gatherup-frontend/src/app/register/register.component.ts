@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../class/user/user'; // imports our User class
+import { ConfigService } from '../service/config.service';
+import { Router } from '@angular/router';
 
 /* 
-	This component maps input values to a JavaScript object and passes it to Java via Angular's HttpClient
+	This component maps input values to a JavaScript object and passes it to Java via our service's CRUD methods
 */
 @Component({
 	selector: 'app-register',
@@ -11,28 +13,30 @@ import { User } from '../class/user/user'; // imports our User class
 })
 export class RegisterComponent implements OnInit {
 
-	constructor() {
+	user: User;
+	// user: any = {};
+
+	constructor(private service: ConfigService, private router: Router) {
+		this.user = new User();
 	}
 
 	ngOnInit(): void {
 	}
 
-	// Dummy user obj thats assigned email/password via two-way binding; used PURELY FOR VALIDATION
-	user: any = {};
 
 	onSubmit() {
 		console.log("Register submit button pressed.");
 
-		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
-		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
-		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
-		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
-		this.user = new User(email, password, firstName, lastName, Number(contact));
+		// // Constructs a user instance based on input values
+		// let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+		// let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+		// let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
+		// let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
+		// let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
 
-		// Sanity check
+		// Uses service's createUser() to POST
+		this.service.createUser(this.user).subscribe(res => this.router.navigate(["/profile"]));
+		this.user = new User();
 		console.log(this.user);
-
-		// TODO: do things with this constructed user object; use Angular's HttpClient to send to server.
 	}
 }

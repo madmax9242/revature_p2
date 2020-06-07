@@ -26,12 +26,6 @@ import { ConfigService } from './service/config.service';
 		FormsModule,
 		HttpClientModule,
 		AppRoutingModule,
-		RouterModule.forRoot([
-			{ path: 'login', component: LoginComponent },
-			{ path: 'register', component: RegisterComponent },
-			{ path: 'profile', component: ProfileComponent },
-			{ path: 'event', component: EventComponent },
-		])
 	],
 	providers: [ConfigService], // make providers global
 	bootstrap: [AppComponent]
