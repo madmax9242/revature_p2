@@ -14,23 +14,23 @@ export class ConfigService {
 
 	public baseUrl: string;
 
-	// Customizing HTTP options to throw into CRUD operations
+	// Custom HTTP options to throw into CRUD operations
 	httpOptions = {
 		headers: new HttpHeaders({
 			'Content-Type': 'application/json',
 			'Access-Control-Allow-Origin': '*',
 			'Authorization': 'authkey',
 			'userid': '1'
-		})
+		}),
 	};
 
 	// Boots HttpClient upon creation
 	constructor(private http: HttpClient) {
-		this.baseUrl = "localhost:9999/"; // sets baseUrl to the "home" endpoint
+		this.baseUrl = "http://localhost:9999/"; // sets baseUrl to the "home" endpoint
 	}
 
 	// READ
-	public getAllUsers(): Observable<User[]> {
+	public getUser(): Observable<User[]> {
 		return this.http.get<User[]>(this.baseUrl + "user/all", this.httpOptions); // localhost:9999/user/all
 	}
 

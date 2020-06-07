@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../class/user/user'; // imports our User class
+import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
@@ -14,38 +14,35 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
 
-	// For createUser()
+	// For register()
 	user: User;
-	// user: any = {};
-
-	// For getAllUsers()
-	allUsers: User[];
 
 	constructor(private service: ConfigService, private router: Router) {
-		this.user = new User();
+		// Complains if this is removed, dunno why tbh
+		this.user = new User(undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
 	}
 
-	createUser() {
-		console.log("Register submit button pressed.");
+	register() {
+		console.log("Register button pressed.");
 
-		// // Constructs a user instance based on input values
-		// let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
-		// let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		// let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
-		// let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
-		// let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
+		// Constructs a user object based on input values
+		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
+		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
+		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
+		this.user = new User(email, password, firstName, lastName, contact);
 
-		this.service.createUser(this.user).subscribe(res => this.router.navigate(["/profile"]));
-		this.user = new User();
+		// Sanity check
 		console.log(this.user);
-	}
 
-	getAllUsers() {
-		console.log("Getting all users.");
+		// POSTs constructed user and sends response to profile page; also changes the view
+		this.service.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
 
-		this.service.getAllUsers().subscribe(data => { this.allUsers = data; });
+		// POSTS user and assigns to local user object
+		// this.service.createUser(this.user).subscribe(data => { this.user = data });
 	}
 }

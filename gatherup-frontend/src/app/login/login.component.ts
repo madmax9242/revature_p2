@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../class/user/user'; // imports our User class
+import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
 import { Router } from '@angular/router';
 
@@ -10,22 +10,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+	// For login()
 	user: User;
-	// user: any = {};
 
 	constructor(private service: ConfigService, private router: Router) {
-		this.user = new User();
+		// this.user = new User(null, null, null, null, null);
 	}
 
 	ngOnInit(): void {
 	}
 
-	onSubmit() {
-		console.log("Login submit button pressed.");
+	login() {
+		console.log("Login button pressed.");
 
+		// Constructs a user object to validate credentials
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
 		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		this.user = new User();
+		this.user = new User(email, password, undefined, undefined, undefined);
 
 		// Sanity check
 		console.log(this.user);
