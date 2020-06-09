@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService, RickMorty } from '../service/config.service';
+import { ConfigService } from '../service/config.service';
 import { User } from '../class/user/user';
 
 @Component({

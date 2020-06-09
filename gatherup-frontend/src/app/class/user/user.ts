@@ -1,6 +1,7 @@
 export class User {
 
-	email: string; // will act as primary key; will be a foreign key when we associate users with their bucket list items
+	id: number;
+	email: string; // PK to associate users with their events
 	password: string;
 	firstName: string;
 	lastName: string;
