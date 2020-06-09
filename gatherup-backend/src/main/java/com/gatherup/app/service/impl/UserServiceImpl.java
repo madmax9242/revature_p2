@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
 	// CREATE
 	@Override
 	public User createUser(User user) {
-		//TODO Need to validate on users
 		User retUsr = null;
 		if(getUserByEmail(user.getEmail()) == null){
 			retUsr = userDao.save(user);
@@ -47,9 +46,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserById(int id) {
+		User retUser = null;
 		Optional<User> usr = userDao.findById(id);
-		User usrEvent = usr.get();
-		return usrEvent;
+		if(usr != null) {
+			retUser = usr.get();
+		}
+		
+		
+		
+		return retUser;
 	}
 
 	@Override

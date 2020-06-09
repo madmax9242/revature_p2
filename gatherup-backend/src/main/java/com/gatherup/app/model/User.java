@@ -11,13 +11,13 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
+	private int userID;
 	@Column(unique=true)
 	private String userEmail;
 	private String password;
 	private String firstName;
 	private String lastName;
 	private String contact;
-	private int userID;
 
 	public User() {
 	}
@@ -70,6 +70,22 @@ public class User {
 
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
 	
