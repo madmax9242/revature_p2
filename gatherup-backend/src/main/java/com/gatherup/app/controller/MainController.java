@@ -14,4 +14,9 @@ public class MainController {
 		return "Hello World!";
 
 	}
+	
+	@GetMapping("/error") // Custom error page
+	public String errorPage() {
+		return "<h1>Error</h1>";
+	}
 }
