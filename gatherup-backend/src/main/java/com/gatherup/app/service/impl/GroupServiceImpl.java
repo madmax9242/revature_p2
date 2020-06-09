@@ -1,15 +1,13 @@
-package com.gatherup.app.service.container;
+package com.gatherup.app.service.impl;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.gatherup.app.dao.GroupDao;
+import com.gatherup.app.model.Group;
+import com.gatherup.app.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gatherup.app.dao.GroupDao;
-import com.gatherup.app.model.Event;
-import com.gatherup.app.model.Group;
-import com.gatherup.app.service.GroupService;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GroupServiceContainer implements GroupService{

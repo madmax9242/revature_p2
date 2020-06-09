@@ -1,6 +1,6 @@
 export class User {
 
-	email: string;
+	email: string; // will act as primary key; will be a foreign key when we associate users with their bucket list items
 	password: string;
 	firstName: string;
 	lastName: string;
