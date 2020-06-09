@@ -1,5 +1,6 @@
 package com.gatherup.app.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,15 +12,30 @@ public class Event {
 
 	@Id
 	@GeneratedValue
+	@Column(unique = true)
 	private int eventID;
+	private String userEmail;
 	private String eventName;
 	private String eventType;
-	private String date;
-	private String time;
+	private String eventLocation;
+	private String dateTime;
+	private String eventDescription;
 
 	public Event() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Event(int eventID, String email, String eventName, String eventType, String eventLocation, String dateTime,
+			String eventDescription) {
+		super();
+		this.eventID = eventID;
+		this.userEmail = email;
+		this.eventName = eventName;
+		this.eventType = eventType;
+		this.eventLocation = eventLocation;
+		this.dateTime = dateTime;
+		this.eventDescription = eventDescription;
 	}
 
 	public int getEventID() {
@@ -28,6 +44,14 @@ public class Event {
 
 	public void setEventID(int eventID) {
 		this.eventID = eventID;
+	}
+
+	public String getEmail() {
+		return userEmail;
+	}
+
+	public void setEmail(String email) {
+		this.userEmail = email;
 	}
 
 	public String getEventName() {
@@ -46,25 +70,30 @@ public class Event {
 		this.eventType = eventType;
 	}
 
-	public String getDate() {
-		return date;
+	public String getEventLocation() {
+		return eventLocation;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setEventLocation(String eventLocation) {
+		this.eventLocation = eventLocation;
 	}
 
-	public String getTime() {
-		return time;
+	public String getDateTime() {
+		return dateTime;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
-	@Override
-	public String toString() {
-		return "Event [eventID=" + eventID + ", eventName=" + eventName + ", eventType=" + eventType + ", date=" + date
-				+ ", time=" + time + "]";
+	public String getEventDescription() {
+		return eventDescription;
 	}
+
+	public void setEventDescription(String eventDescription) {
+		this.eventDescription = eventDescription;
+	}
+
+	
+	
 }

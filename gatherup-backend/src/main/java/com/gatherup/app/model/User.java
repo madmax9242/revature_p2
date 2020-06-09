@@ -1,5 +1,6 @@
 package com.gatherup.app.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,40 +11,33 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@GeneratedValue
-	private int id;
-	//@Column(unique=true)
-	private String email;
+	@Column(unique=true)
+	private String userEmail;
 	private String password;
 	private String firstName;
 	private String lastName;
 	private String contact;
+	private int userID;
 
 	public User() {
 	}
 
-	public User(String email, String password, String firstName, String lastName, String contact) {
-		this.email = email;
+	public User(String email, String password, String firstName, String lastName, String contact, int userID) {
+		super();
+		this.userEmail = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.contact = contact;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		this.userID = userID;
 	}
 
 	public String getEmail() {
-		return email;
+		return userEmail;
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.userEmail = email;
 	}
 
 	public String getPassword() {
@@ -77,4 +71,8 @@ public class User {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
+
+	
+
+	
 }
