@@ -13,5 +13,5 @@ export class EventComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	// TODO: implement buttons to create, modify, and delete bucket list items
+	// TODO: implement functionality to create, modify, and delete bucket list items
 }

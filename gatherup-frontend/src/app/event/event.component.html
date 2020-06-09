@@ -2,27 +2,46 @@
 	<!-- Event Heading -->
 	<h1 class="jumbotron m-4">Bucket List</h1>
 
-	<!-- Event Row -->
-	<div class="row">
-		<div class="col-8">
-			<img class="img-fluid m-4" src="https://w.wallhaven.cc/full/2e/wallhaven-2evd36.jpg" alt="Event Image" width="100%">
-		</div>
-		<div class="col-4">
-			<h2 class="m-4">To Do</h2>
-			<ul>
-				<li>Lorem Ipsum</li>
-				<li>Dolor Sit Amet</li>
-				<li>Consectetur</li>
-				<li>Adipiscing Elit</li>
-				<li>Lorem Ipsum</li>
-				<li>Dolor Sit Amet</li>
-				<li>Consectetur</li>
-				<li>Adipiscing Elit</li>
-				<li>Lorem Ipsum</li>
-				<li>Dolor Sit Amet</li>
-				<li>Consectetur</li>
-				<li>Adipiscing Elit</li>
-			</ul>
+	<!-- Event Picture -->
+	<div class="container d-flex justify-content-center my-4">
+		<img class="rounded mx-auto d-block" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" alt="Event Image">
+	</div>
+
+	<!-- Bullet List -->
+	<div class="container d-flex justify-content-center">
+		<div class="col-12">
+			<div class="card px-3">
+				<div class="card-body">
+					<div class="add-items d-flex">
+						<input type="text" class="form-control rounded todo-list-input" placeholder="What adventurous plans do you have?">
+						<button class="add btn btn-primary font-weight-bold rounded todo-list-add-btn">Add</button>
+					</div>
+
+					<!-- TEST 1 -->
+					<div class="list-wrapper">
+						<ul class="d-flex flex-column-reverse todo-list">
+							<li>
+								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Hot Springs National Park <i class="input-helper"></i></label> </div>
+							</li>
+							<li class="completed">
+								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked> Redwood State Park <i class="input-helper"></i></label> </div>
+							</li>
+							<li>
+								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Gateway Arch National Park <i class="input-helper"></i></label> </div>
+							</li>
+							<li>
+								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Yosemite National Park <i class="input-helper"></i></label> </div>
+							</li>
+							<li class="completed">
+								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked> Zembra National Park <i class="input-helper"></i></label> </div>
+							</li>
+							<li>
+								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Nairobi National Park <i class="input-helper"></i></label> </div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
