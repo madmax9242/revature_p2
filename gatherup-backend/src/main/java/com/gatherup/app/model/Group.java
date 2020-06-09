@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Group {
+
 	@Id
 	@GeneratedValue
 	private int groupID;
@@ -74,7 +75,4 @@ public class Group {
 		return "Group [groupID=" + groupID + ", groupName=" + groupName + ", adminUserName=" + admin
 				+ ", groupSlogan=" + groupSlogan + ", memberID=" + memberIDs + ", eventID=" + eventIDs + "]";
 	}
-
-	
-
 }

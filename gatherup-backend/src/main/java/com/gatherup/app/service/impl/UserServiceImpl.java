@@ -1,4 +1,4 @@
-package com.gatherup.app.service.container;
+package com.gatherup.app.service.impl;
 
 import com.gatherup.app.dao.UserDao;
 import com.gatherup.app.model.User;
@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class UserServiceContainer implements UserService {
+/*
+	Class implements CRUD methods
+ */
+@Service // marks this class as a service provider; autowires this class to it's interface
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
@@ -34,7 +37,7 @@ public class UserServiceContainer implements UserService {
 
 	@Override
 	public User getUserById(int id) {
-		return userDao.findById(id).get();
+		return userDao.findById(String.valueOf(id)).get();
 	}
 
 	@Override
@@ -51,6 +54,6 @@ public class UserServiceContainer implements UserService {
 	// DELETE
 	@Override
 	public void deleteUserById(int id) {
-		userDao.deleteById(id);
+		userDao.deleteById(String.valueOf(id));
 	}
 }

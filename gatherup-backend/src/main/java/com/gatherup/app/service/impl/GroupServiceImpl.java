@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GroupServiceContainer implements GroupService{
+public class GroupServiceImpl implements GroupService {
 
 	@Autowired
 	private GroupDao dao;
-	
+
 	@Override
 	public Group createGroup(Group g) {
 		return dao.save(g);
@@ -41,5 +41,4 @@ public class GroupServiceContainer implements GroupService{
 		Group retGroup = gr.get();
 		return retGroup;
 	}
-
 }

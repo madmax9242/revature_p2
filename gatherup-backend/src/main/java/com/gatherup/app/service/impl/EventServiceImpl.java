@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EventServiceContainer implements EventService{
+public class EventServiceImpl implements EventService {
 
 	@Autowired
 	private EventDao dao;
-	
+
 	@Override
 	public Event createEvent(Event e) {
 		return dao.save(e);
@@ -41,5 +41,4 @@ public class EventServiceContainer implements EventService{
 		Event retEvent = ev.get();
 		return retEvent;
 	}
-
 }
