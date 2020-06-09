@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
 import { Router } from '@angular/router';
-import { HttpHeaders } from '@angular/common/http';
 import { PasswordEncryptionService } from '../service/password-encryption.service';
 
 /* 
