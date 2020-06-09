@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EventComponent } from './event/event.component';
 import { ConfigService } from './service/config.service';
+import { PasswordEncryptionService } from './service/password-encryption.service';
 
 // ROOT MODULE
 @NgModule({
@@ -26,7 +27,7 @@ import { ConfigService } from './service/config.service';
 		HttpClientModule,
 		AppRoutingModule,
 	],
-	providers: [ConfigService], // make providers global
+	providers: [ConfigService, PasswordEncryptionService], // make providers global
 	bootstrap: [AppComponent]
 })
 export class AppModule {

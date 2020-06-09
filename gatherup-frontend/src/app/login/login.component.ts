@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
 import { Router } from '@angular/router';
+import { PasswordEncryptionService } from '../service/password-encryption.service';
 
 @Component({
 	selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 	// For login()
 	user: User;
 
-	constructor(private service: ConfigService, private router: Router) {
+	constructor(private service: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
 		// Complains if this is removed, dunno why tbh
 		this.user = new User(undefined, undefined, undefined, undefined, undefined);
 	}
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
 		// Constructs a user object to validate credentials
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
 		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		this.user = new User(email, password, undefined, undefined, undefined);
+		this.user = new User(email, this.encryptionService.encrypt(password), undefined, undefined, undefined);
 
 		// Sanity check
 		console.log(this.user);
