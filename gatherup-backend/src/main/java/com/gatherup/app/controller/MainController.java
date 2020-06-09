@@ -15,8 +15,5 @@ public class MainController {
 
 	}
 	
-	@GetMapping("/error") // Custom error page
-	public String errorPage() {
-		return "<h1>Error</h1>";
-	}
+
 }
