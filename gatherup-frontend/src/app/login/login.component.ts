@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
 	user: User;
 
 	constructor(private service: ConfigService, private router: Router) {
-		// this.user = new User(null, null, null, null, null);
+		// Complains if this is removed, dunno why tbh
+		this.user = new User(undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
 		console.log(this.user);
 
 		// Validates against hard-coded credentials
-		if (email == "hello@world.com" && password == "p4ssw0rd") {
+		if (this.user.email == "hello@world.com" && this.user.password == "p4ssw0rd") {
 			alert('Login success!\n\n' + JSON.stringify(this.user, null, 4));
 			location.href = "/profile"; // routes accordingly
 		} else {

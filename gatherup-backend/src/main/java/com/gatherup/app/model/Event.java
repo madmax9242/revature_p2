@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table
 public class Event {
-	
+
 	@Id
 	@GeneratedValue
 	private int eventID;
@@ -15,7 +16,7 @@ public class Event {
 	private String eventType;
 	private String date;
 	private String time;
-	
+
 	public Event() {
 		super();
 		// TODO Auto-generated constructor stub

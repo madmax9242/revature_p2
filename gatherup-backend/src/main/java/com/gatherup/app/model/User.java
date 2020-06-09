@@ -1,23 +1,41 @@
 package com.gatherup.app.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table
 public class User {
 
 	@Id
+	@GeneratedValue
+	private int id;
+	//@Column(unique=true)
 	private String email;
+	private String password;
 	private String firstName;
 	private String lastName;
-	private String password;
-	private int phoneNumber;
-	@GeneratedValue
-	private int memberNumber;
-	
+	private String contact;
+
 	public User() {
-		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	public User(String email, String password, String firstName, String lastName, String contact) {
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.contact = contact;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
@@ -26,6 +44,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getFirstName() {
@@ -44,37 +70,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getContact() {
+		return contact;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
-
-	public int getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public int getMemberNumber() {
-		return memberNumber;
-	}
-
-	public void setMemberNumber(int memberNumber) {
-		this.memberNumber = memberNumber;
-	}
-
-	@Override
-	public String toString() {
-		return "User [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", password=" + password
-				+ ", phoneNumber=" + phoneNumber + ", memberNumber=" + memberNumber + "]";
-	}
-	
-	
-
-	
 }

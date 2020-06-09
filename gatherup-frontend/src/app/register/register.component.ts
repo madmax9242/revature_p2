@@ -39,10 +39,10 @@ export class RegisterComponent implements OnInit {
 		// Sanity check
 		console.log(this.user);
 
-		// POSTs constructed user and sends response to profile page; also changes the view
+		// POSTs constructed user to endpoint and routes to the profile view
 		this.service.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
 
-		// POSTS user and assigns to local user object
+		// POSTs user to endpoint and assigns to a local user object
 		// this.service.createUser(this.user).subscribe(data => { this.user = data });
 	}
 }

@@ -1,15 +1,27 @@
 package com.gatherup.app.service;
 
-import java.util.List;
-
 import com.gatherup.app.model.User;
 
-public interface UserService{
-	
-	public User createUser(User u);
-	public User updateUser(User u);
-	public User getUserByUserName(String userName);
-	public void deleteUserByUserName(String userName);
+import java.util.List;
+
+/*
+	Interface declares CRUD methods
+ */
+public interface UserService {
+
+	// CREATE
+	public User createUser(User user);
+
+	// UPDATE
+	public User updateUser(User user);
+
+	// DELETE
+	public void deleteUserById(int id);
+
+	// READ
 	public List<User> getAllUsers();
-	
+
+	public User getUserById(int id);
+
+	public User getUserByEmail(String email);
 }

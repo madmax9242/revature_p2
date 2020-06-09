@@ -1,21 +1,20 @@
-package com.gatherup.app.service.container;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.gatherup.app.service.impl;
 
 import com.gatherup.app.dao.EventDao;
 import com.gatherup.app.model.Event;
 import com.gatherup.app.service.EventService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class EventServiceContainer implements EventService{
+public class EventServiceImpl implements EventService {
 
 	@Autowired
 	private EventDao dao;
-	
+
 	@Override
 	public Event createEvent(Event e) {
 		return dao.save(e);
@@ -42,5 +41,4 @@ public class EventServiceContainer implements EventService{
 		Event retEvent = ev.get();
 		return retEvent;
 	}
-
 }
