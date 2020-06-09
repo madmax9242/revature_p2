@@ -56,39 +56,4 @@ export class ConfigService {
 	public deleteUserById(id: number) {
 		return this.http.delete<User>(this.baseUrl + "/user/delete/" + id) // localhost:9999/user/delete/{id}
 	}
-
-
-
-
-
-
-
-
-
-
-
-	// API TESTING (https://rickandmortyapi.com/documentation#character)
-	private rmUrl: string;
-	setUrl(id: number) {
-		this.rmUrl = `https://rickandmortyapi.com/api/character/${id}`;
-	}
-	getRickMorty(): Observable<RickMorty> {
-		return this.http.get<RickMorty>(this.rmUrl)
-	}
-}
-
-// API TESTING
-export interface RickMorty {
-	"id": number;
-	"name": string;
-	"status": string;
-	"species": string;
-	"type": string;
-	"gender": string;
-	"origin": object;
-	"location": object;
-	"image": string;
-	"episode": Array<RickMorty>;
-	"url": string;
-	"created": string;
 }
