@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../service/config.service';
+
 import { Event } from '../class/event/event';
+import { EventService } from '../service/event.service';
 
 @Component({
 	selector: 'app-event',
@@ -10,12 +11,15 @@ import { Event } from '../class/event/event';
 export class EventComponent implements OnInit {
 
 	event: Event;
+	events: Event[];
 
-	constructor(private service: ConfigService) {
+	constructor(private eventService: EventService) {
 		this.event = new Event(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
+		// Upon initialization, extracts events from endpoint and inserts into events array
+		this.eventService.getAllEvents().subscribe(data => { this.events = data; });
 	}
 
 	/*
@@ -26,7 +30,7 @@ export class EventComponent implements OnInit {
 			dateTime: string
 			eventType: string
 		I know we have more fields for events, but a user wouldn't need to interact with them.
-		We can manually utilize the extraneous variables for associations on the server side, or something.
+		We can manually utilize those extraneous variables for associations on the server side, or something.
 	*/
 
 	addEvent() {
@@ -38,16 +42,12 @@ export class EventComponent implements OnInit {
 		let eventLocation = (<HTMLInputElement>document.getElementById("inputEventLocation")).value;
 		let dateTime = (<HTMLInputElement>document.getElementById("inputDateTime")).value;
 		let eventType = (<HTMLInputElement>document.getElementById("inputEventType")).value;
-		this.event = new Event(undefined, undefined, eventName, eventType, eventLocation, dateTime, eventDescription);
+		this.event = new Event(undefined, undefined, eventName, eventDescription, eventLocation, dateTime, eventType);
 
 		// Sanity check
 		console.log(this.event);
 
-		// TODO: POST constructed event to endpoint (via an EventService service that's yet to be created)
-	}
-
-	displayEvents() {
-		console.log("displayEvents() button clicked.");
-		// TODO: dynamically display events in tabular format or something
+		// POSTs event to endpoint and assigns to a local event object
+		this.eventService.createEvent(this.event).subscribe(data => this.event = data);
 	}
 }

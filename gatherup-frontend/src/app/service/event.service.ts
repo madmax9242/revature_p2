@@ -20,7 +20,6 @@ export class EventService {
 			'Content-Type': 'application/json',
 			'Access-Control-Allow-Origin': '*',
 			'Authorization': 'authkey',
-			'userid': '1'
 		}),
 	};
 
@@ -50,6 +49,6 @@ export class EventService {
 
 	// DELETE
 	public deleteEventById(id: number) {
-		return this.http.delete<Event>(this.baseUrl + "/event/" + id) // localhost:9999/event/delete/{id}
+		return this.http.delete<Event>(this.baseUrl + "/event/" + id) // localhost:9999/event/{id}
 	}
 }

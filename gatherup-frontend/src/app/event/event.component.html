@@ -17,37 +17,43 @@
 					<div class="form-group">
 						<input [(ngModel)]="event.eventName" #eventName="ngModel" name="inputEventName" id="inputEventName" type="text" placeholder="Event Name" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
-
 					<div class="form-group">
-						<input [(ngModel)]="event.eventDescription" #eventDescription="ngModel" name="inputEventDescription" id="inputEventDescription" type="text" placeholder="Event Description" class="form-control rounded-pill border-0 shadow px-4" pattern="[0-9]{10}" required>
+						<input [(ngModel)]="event.eventDescription" #eventDescription="ngModel" name="inputEventDescription" id="inputEventDescription" type="text" placeholder="Event Description" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
-
 					<div class="form-group">
 						<input [(ngModel)]="event.eventLocation" #eventLocation="ngModel" name="inputEventLocation" id="inputEventLocation" type="text" placeholder="Event Location" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
-
-					<div>
+					<div class="form-group">
 						<input [(ngModel)]="event.dateTime" #dateTime="ngModel" name="inputDateTime" id="inputDateTime" type="datetime-local" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
-
 					<div class="form-group">
-						<label for="inputEventType"></label>
-						<select class="form-control" name="inputEventType" id="inputEventType">
-							<option value="generic">Generic Event</option>
-							<option value="outdoors">Outdoors</option>
-							<option value="party">Party</option>
-							<option value="game night">Game Night</option>
-							<option value="bar">Bar</option>
-							<option value="hottenanny">Hootenanny</option>
+						<select [(ngModel)]="event.eventType" #eventType="ngModel" name="inputEventType" id="inputEventType" class="form-control rounded-pill border-0 shadow px-4">
+							<option value="Generic Event">Generic Event</option>
+							<option value="Outdoors">Outdoors</option>
+							<option value="Party">Party</option>
+							<option value="Game Night">Game Night</option>
+							<option value="Bar">Bar</option>
+							<option value="Hootenanny">Hootenanny</option>
 						</select>
 					</div>
-
 					<!-- BUTTONS -->
 					<div class="text-center">
-						<button class="btn btn-success btn-inline text-uppercase rounded-pill border-0 shadow mt-4" type="submit">Add Event</button>
-						<button class="btn btn-primary btn-inline text-uppercase rounded-pill border-0 shadow mt-4" type="button" (click)="displayEvents()">My Events</button>
+						<button class="btn btn-primary btn-block rounded-pill shadow my-4" type="submit">Add Event</button>
 					</div>
 				</form>
+
+				<!-- EVENT INFORMATION -->
+				<div *ngFor="let event of events">
+					<p>Event Name: {{event?.eventName}}</p>
+					<p>Event Description: {{event?.eventDescription}}</p>
+					<p>Event Location: {{event?.eventLocation}}</p>
+					<p>Date & Time: {{event?.dateTime | date}}</p>
+					<p>Event Type: {{event?.eventType}}</p>
+
+					<p>Event: {{event | json}}</p>
+
+					<br>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,41 +1,40 @@
 package com.gatherup.app.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
 public class Event {
 
 	@Id
-	@GeneratedValue
-	@Column(unique = true)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eventID;
 	private String userEmail;
 	private String eventName;
-	private String eventType;
+	private String eventDescription;
 	private String eventLocation;
 	private String dateTime;
-	private String eventDescription;
+	private String eventType;
 
 	public Event() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Event(int eventID, String email, String eventName, String eventType, String eventLocation, String dateTime,
-			String eventDescription) {
-		super();
+	public Event(int eventID, String userEmail, String eventName, String eventDescription, String eventLocation, String dateTime, String eventType) {
 		this.eventID = eventID;
-		this.userEmail = email;
+		this.userEmail = userEmail;
 		this.eventName = eventName;
-		this.eventType = eventType;
+		this.eventDescription = eventDescription;
 		this.eventLocation = eventLocation;
 		this.dateTime = dateTime;
-		this.eventDescription = eventDescription;
+		this.eventType = eventType;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 	public int getEventID() {
@@ -46,14 +45,6 @@ public class Event {
 		this.eventID = eventID;
 	}
 
-	public String getEmail() {
-		return userEmail;
-	}
-
-	public void setEmail(String email) {
-		this.userEmail = email;
-	}
-
 	public String getEventName() {
 		return eventName;
 	}
@@ -62,12 +53,12 @@ public class Event {
 		this.eventName = eventName;
 	}
 
-	public String getEventType() {
-		return eventType;
+	public String getEventDescription() {
+		return eventDescription;
 	}
 
-	public void setEventType(String eventType) {
-		this.eventType = eventType;
+	public void setEventDescription(String eventDescription) {
+		this.eventDescription = eventDescription;
 	}
 
 	public String getEventLocation() {
@@ -86,14 +77,11 @@ public class Event {
 		this.dateTime = dateTime;
 	}
 
-	public String getEventDescription() {
-		return eventDescription;
+	public String getEventType() {
+		return eventType;
 	}
 
-	public void setEventDescription(String eventDescription) {
-		this.eventDescription = eventDescription;
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
 	}
-
-	
-	
 }

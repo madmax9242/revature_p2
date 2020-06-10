@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-/*
-	Uses DAO layer's methods to interact with database; this class acts like a "Servlet"
- */
 @CrossOrigin
 @RestController
 public class UserController {

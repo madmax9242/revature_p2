@@ -1,19 +1,15 @@
 package com.gatherup.app.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
 public class User {
 
 	@Id
-	private int userID;
-	@Column(unique=true)
-	private String userEmail;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String email;
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -22,22 +18,29 @@ public class User {
 	public User() {
 	}
 
-	public User(String email, String password, String firstName, String lastName, String contact, int userID) {
-		super();
-		this.userEmail = email;
+	public User(int id, String email, String password, String firstName, String lastName, String contact) {
+		this.id = id;
+		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.contact = contact;
-		this.userID = userID;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
-		return userEmail;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		this.userEmail = email;
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -72,23 +75,15 @@ public class User {
 		this.contact = contact;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	@Override
+	public String toString() {
+		return "User {" +
+				"id=" + id +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", contact='" + contact + '\'' +
+				'}';
 	}
-
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-	
-
-	
 }
