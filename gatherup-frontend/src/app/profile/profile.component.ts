@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		// Upon initialization, fetches user from endpoint and inserts into user array
+		// Upon initialization, extracts user from endpoint and inserts into user array
 		this.service.getUser().subscribe(data => { this.user = data; });
 	}
 }

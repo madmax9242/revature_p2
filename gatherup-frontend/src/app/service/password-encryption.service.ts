@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 // import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
+/*
+	Encrypts password before sending to DB
+*/
 @Injectable({
 	providedIn: 'root'
 })
