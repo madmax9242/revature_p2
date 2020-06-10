@@ -18,15 +18,14 @@ export class RegisterComponent implements OnInit {
 	user: User;
 
 	constructor(private service: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
-		// Complains if this is removed, dunno why tbh
-		this.user = new User(undefined, undefined, undefined, undefined, undefined);
+		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
 	}
 
 	register() {
-		console.log("Register button pressed.");
+		console.log("register() button pressed.");
 
 		// Constructs a user object based on input values
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
@@ -34,7 +33,7 @@ export class RegisterComponent implements OnInit {
 		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
 		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
 		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
-		this.user = new User(email, this.encryptionService.encrypt(password), firstName, lastName, contact);
+		this.user = new User(undefined, email, this.encryptionService.encrypt(password), firstName, lastName, contact);
 
 		// Sanity check
 		console.log(this.user);

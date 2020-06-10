@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EventComponent } from './event/event.component';
 import { ConfigService } from './service/config.service';
+import { EventService } from './service/event.service';
 import { PasswordEncryptionService } from './service/password-encryption.service';
 
 // ROOT MODULE
@@ -27,7 +28,7 @@ import { PasswordEncryptionService } from './service/password-encryption.service
 		HttpClientModule,
 		AppRoutingModule,
 	],
-	providers: [ConfigService, PasswordEncryptionService], // make providers global
+	providers: [ConfigService, EventService, PasswordEncryptionService], // make providers global
 	bootstrap: [AppComponent]
 })
 export class AppModule {

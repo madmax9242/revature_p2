@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs'; // HttpClient makes use of observables for all transactions
-import { catchError, retry } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { User } from '../class/user/user';
 
 /*
-	This service provides CRUD operations via Angular's HttpClient
+	This service provides CRUD operations for users
 */
 @Injectable({
 	providedIn: 'root'

@@ -7,40 +7,45 @@
 		<img class="rounded mx-auto d-block" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" alt="Event Image">
 	</div>
 
-	<!-- Bullet List -->
-	<div class="container d-flex justify-content-center">
-		<div class="col-12">
-			<div class="card px-3">
-				<div class="card-body">
-					<div class="add-items d-flex">
-						<input type="text" class="form-control rounded todo-list-input" placeholder="What adventurous plans do you have?">
-						<button class="add btn btn-primary font-weight-bold rounded todo-list-add-btn">Add</button>
+	<!-- EVENT CREATION -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-xl-8 mx-auto">
+				<p class="display-4">Events</p>
+				<form (ngSubmit)="addEvent()" #thisForm="ngForm">
+					<!-- INPUT FIELDS -->
+					<div class="form-group">
+						<input [(ngModel)]="event.eventName" #eventName="ngModel" name="inputEventName" id="inputEventName" type="text" placeholder="Event Name" class="form-control rounded-pill border-0 shadow px-4" required>
+					</div>
+					<div class="form-group">
+						<input [(ngModel)]="event.eventDescription" #eventDescription="ngModel" name="inputEventDescription" id="inputEventDescription" type="text" placeholder="Event Description" class="form-control rounded-pill border-0 shadow px-4" pattern="[0-9]{10}" required>
+					</div>
+					<div class="form-group">
+						<input [(ngModel)]="event.eventLocation" #eventLocation="ngModel" name="inputEventLocation" id="inputEventLocation" type="text" placeholder="Event Location" class="form-control rounded-pill border-0 shadow px-4" required>
+					</div>
+					<div>
+						<input [(ngModel)]="event.dateTime" #dateTime="ngModel" name="inputDateTime" id="inputDateTime" type="datetime-local" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
 
-					<!-- TEST 1 -->
-					<div class="list-wrapper">
-						<ul class="d-flex flex-column-reverse todo-list">
-							<li>
-								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Hot Springs National Park <i class="input-helper"></i></label> </div>
-							</li>
-							<li class="completed">
-								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked> Redwood State Park <i class="input-helper"></i></label> </div>
-							</li>
-							<li>
-								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Gateway Arch National Park <i class="input-helper"></i></label> </div>
-							</li>
-							<li>
-								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Yosemite National Park <i class="input-helper"></i></label> </div>
-							</li>
-							<li class="completed">
-								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked> Zembra National Park <i class="input-helper"></i></label> </div>
-							</li>
-							<li>
-								<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Nairobi National Park <i class="input-helper"></i></label> </div>
-							</li>
-						</ul>
+					<!-- Disabling dropdown menu for now; not sure why it refreshes every time an option is selected -->
+					<!-- <div class="form-group dropdown">
+						<button class="btn btn-warning btn-block rounded-pill border-0 shadow mt-4 dropdown-toggle" name="inputEventType" id="inputEventType" type="button" id="dropdownButton" data-toggle="dropdown" aria-haspopup="true">Event Type</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownButton">
+							<a class="dropdown-item" href="/event">Outdoors</a>
+							<a class="dropdown-item" href="/event">Reunion/Birthday/Anniversary</a>
+							<a class="dropdown-item" href="/event">Breakfast/Lunch/Dinner</a>
+							<a class="dropdown-item" href="/event">Bar/Coffee/Tea</a>
+							<a class="dropdown-item" href="/event">Game Night</a>
+							<a class="dropdown-item" href="/event">Hootenanny</a>
+						</div>
+					</div> -->
+
+					<!-- BUTTONS -->
+					<div class="text-center">
+						<button class="btn btn-success btn-inline text-uppercase rounded-pill border-0 shadow mt-4" type="submit">Add Event</button>
+						<button class="btn btn-primary btn-inline text-uppercase rounded-pill border-0 shadow mt-4" type="button" (click)="displayEvents()">My Events</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
