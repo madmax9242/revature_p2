@@ -1,25 +1,40 @@
 package com.gatherup.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
 public class Event {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eventID;
+	private String userEmail;
 	private String eventName;
+	private String eventDescription;
+	private String eventLocation;
+	private String dateTime;
 	private String eventType;
-	private String date;
-	private String time;
 
 	public Event() {
-		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	public Event(int eventID, String userEmail, String eventName, String eventDescription, String eventLocation, String dateTime, String eventType) {
+		this.eventID = eventID;
+		this.userEmail = userEmail;
+		this.eventName = eventName;
+		this.eventDescription = eventDescription;
+		this.eventLocation = eventLocation;
+		this.dateTime = dateTime;
+		this.eventType = eventType;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 	public int getEventID() {
@@ -38,33 +53,35 @@ public class Event {
 		this.eventName = eventName;
 	}
 
+	public String getEventDescription() {
+		return eventDescription;
+	}
+
+	public void setEventDescription(String eventDescription) {
+		this.eventDescription = eventDescription;
+	}
+
+	public String getEventLocation() {
+		return eventLocation;
+	}
+
+	public void setEventLocation(String eventLocation) {
+		this.eventLocation = eventLocation;
+	}
+
+	public String getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
+	}
+
 	public String getEventType() {
 		return eventType;
 	}
 
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	@Override
-	public String toString() {
-		return "Event [eventID=" + eventID + ", eventName=" + eventName + ", eventType=" + eventType + ", date=" + date
-				+ ", time=" + time + "]";
 	}
 }

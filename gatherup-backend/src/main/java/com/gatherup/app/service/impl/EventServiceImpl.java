@@ -13,31 +13,35 @@ import java.util.Optional;
 public class EventServiceImpl implements EventService {
 
 	@Autowired
-	private EventDao dao;
+	private EventDao eventDao;
 
+	// CREATE
 	@Override
-	public Event createEvent(Event e) {
-		return dao.save(e);
+	public Event createEvent(Event event) {
+		return eventDao.save(event);
 	}
 
+	// UPDATE
 	@Override
-	public Event updateEvent(Event e) {
-		return dao.save(e);
+	public Event updateEvent(Event event) {
+		return eventDao.save(event);
 	}
 
+	// DELETE
 	@Override
 	public void deleteEventById(int id) {
-		dao.deleteById(id);
+		eventDao.deleteById(id);
 	}
 
+	// READ
 	@Override
 	public List<Event> getAllEvents() {
-		return dao.findAll();
+		return eventDao.findAll();
 	}
 
 	@Override
 	public Event getEventById(int id) {
-		Optional<Event> ev = dao.findById(id);
+		Optional<Event> ev = eventDao.findById(id);
 		Event retEvent = ev.get();
 		return retEvent;
 	}

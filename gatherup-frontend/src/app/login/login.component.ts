@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
-import { Router } from '@angular/router';
 import { PasswordEncryptionService } from '../service/password-encryption.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 	// For login()
 	user: User;
 
-	constructor(private service: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
+	constructor(private configService: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
 		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
@@ -40,14 +41,7 @@ export class LoginComponent implements OnInit {
 		// 	alert("Invalid credentials!")
 		// }
 
-		// Validates against database credentials
-		this.service.getUserByEmail(this.user.email).subscribe(data => this.router.navigate(["/profile"]));
+		// Validates against database credentials and routes to profile page
+		this.configService.getUserByEmail(this.user.email).subscribe(data => this.router.navigate(["/profile"]));
 	}
 }
-
-/*
-	@GetMapping("user/email/{email}")
-	public User getUserByEmail(@PathVariable("email") String email) {
-		return userService.getUserByEmail(email);
-	}
-*/

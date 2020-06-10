@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../service/config.service';
+
 import { User } from '../class/user/user';
+import { ConfigService } from '../service/config.service';
 
 @Component({
 	selector: 'app-profile',
@@ -9,13 +10,13 @@ import { User } from '../class/user/user';
 })
 export class ProfileComponent implements OnInit {
 
-	user: User[];
+	users: User[];
 
-	constructor(private service: ConfigService) {
+	constructor(private configService: ConfigService) {
 	}
 
 	ngOnInit(): void {
-		// Upon initialization, extracts user from endpoint and inserts into user array
-		this.service.getAllUsers().subscribe(data => { this.user = data; });
+		// Upon initialization, extracts USERS from endpoint and inserts into user array
+		this.configService.getAllUsers().subscribe(data => { this.users = data; });
 	}
 }

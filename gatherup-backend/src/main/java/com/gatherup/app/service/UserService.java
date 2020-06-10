@@ -4,9 +4,6 @@ import com.gatherup.app.model.User;
 
 import java.util.List;
 
-/*
-	Interface declares CRUD methods
- */
 public interface UserService {
 
 	// CREATE

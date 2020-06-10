@@ -8,10 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/*
-	Class implements CRUD methods
- */
-@Service // marks this class as a service provider; autowires this class to it's interface
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -27,6 +24,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User updateUser(User user) {
 		return userDao.save(user);
+	}
+
+	// DELETE
+	@Override
+	public void deleteUserById(int id) {
+		userDao.deleteById(String.valueOf(id));
 	}
 
 	// READ
@@ -49,11 +52,5 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return null;
-	}
-
-	// DELETE
-	@Override
-	public void deleteUserById(int id) {
-		userDao.deleteById(String.valueOf(id));
 	}
 }

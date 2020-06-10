@@ -6,12 +6,16 @@ import java.util.List;
 
 public interface EventService {
 
-	public Event createEvent(Event e);
+	// CREATE
+	public Event createEvent(Event event);
 
-	public Event updateEvent(Event e);
+	// UPDATE
+	public Event updateEvent(Event event);
 
+	// DELETE
 	public void deleteEventById(int id);
 
+	// READ
 	public List<Event> getAllEvents();
 
 	public Event getEventById(int id);

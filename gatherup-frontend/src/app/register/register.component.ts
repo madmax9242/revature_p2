@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
-import { Router } from '@angular/router';
 import { PasswordEncryptionService } from '../service/password-encryption.service';
 
 /* 
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
 	// For register()
 	user: User;
 
-	constructor(private service: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
+	constructor(private configService: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
 		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
@@ -39,7 +40,7 @@ export class RegisterComponent implements OnInit {
 		console.log(this.user);
 
 		// POSTs constructed user to endpoint and routes to the profile view
-		this.service.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
+		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/event"]));
 
 		// POSTs user to endpoint and assigns to a local user object
 		// this.service.createUser(this.user).subscribe(data => { this.user = data });
