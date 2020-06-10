@@ -26,7 +26,7 @@ export class EventComponent implements OnInit {
 			dateTime: string
 			eventType: string
 		I know we have more fields for events, but a user wouldn't need to interact with them.
-		We can manually utilize the extraneous variables for associations, or something.
+		We can manually utilize the extraneous variables for associations on the server side, or something.
 	*/
 
 	addEvent() {

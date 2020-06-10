@@ -19,6 +19,8 @@
       <excludeFolder url="file://$MODULE_DIR$/GatherUp/src/main/webapp/do-stuff-app/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/do-stuff-app/dist" />
       <excludeFolder url="file://$MODULE_DIR$/do-stuff-app/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/gatherup-frontend/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/gatherup-frontend/tmp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

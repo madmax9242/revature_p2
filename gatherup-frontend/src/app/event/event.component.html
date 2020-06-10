@@ -3,42 +3,44 @@
 	<h1 class="jumbotron m-4">Bucket List</h1>
 
 	<!-- Event Picture -->
-	<div class="container d-flex justify-content-center my-4">
+	<!-- <div class="container d-flex justify-content-center my-4">
 		<img class="rounded mx-auto d-block" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" alt="Event Image">
-	</div>
+	</div> -->
 
 	<!-- EVENT CREATION -->
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-xl-8 mx-auto">
-				<p class="display-4">Events</p>
+				<h2>Add an Event</h2>
 				<form (ngSubmit)="addEvent()" #thisForm="ngForm">
 					<!-- INPUT FIELDS -->
 					<div class="form-group">
 						<input [(ngModel)]="event.eventName" #eventName="ngModel" name="inputEventName" id="inputEventName" type="text" placeholder="Event Name" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
+
 					<div class="form-group">
 						<input [(ngModel)]="event.eventDescription" #eventDescription="ngModel" name="inputEventDescription" id="inputEventDescription" type="text" placeholder="Event Description" class="form-control rounded-pill border-0 shadow px-4" pattern="[0-9]{10}" required>
 					</div>
+
 					<div class="form-group">
 						<input [(ngModel)]="event.eventLocation" #eventLocation="ngModel" name="inputEventLocation" id="inputEventLocation" type="text" placeholder="Event Location" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
+
 					<div>
 						<input [(ngModel)]="event.dateTime" #dateTime="ngModel" name="inputDateTime" id="inputDateTime" type="datetime-local" class="form-control rounded-pill border-0 shadow px-4" required>
 					</div>
 
-					<!-- Disabling dropdown menu for now; not sure why it refreshes every time an option is selected -->
-					<!-- <div class="form-group dropdown">
-						<button class="btn btn-warning btn-block rounded-pill border-0 shadow mt-4 dropdown-toggle" name="inputEventType" id="inputEventType" type="button" id="dropdownButton" data-toggle="dropdown" aria-haspopup="true">Event Type</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownButton">
-							<a class="dropdown-item" href="/event">Outdoors</a>
-							<a class="dropdown-item" href="/event">Reunion/Birthday/Anniversary</a>
-							<a class="dropdown-item" href="/event">Breakfast/Lunch/Dinner</a>
-							<a class="dropdown-item" href="/event">Bar/Coffee/Tea</a>
-							<a class="dropdown-item" href="/event">Game Night</a>
-							<a class="dropdown-item" href="/event">Hootenanny</a>
-						</div>
-					</div> -->
+					<div class="form-group">
+						<label for="inputEventType"></label>
+						<select class="form-control" name="inputEventType" id="inputEventType">
+							<option value="generic">Generic Event</option>
+							<option value="outdoors">Outdoors</option>
+							<option value="party">Party</option>
+							<option value="game night">Game Night</option>
+							<option value="bar">Bar</option>
+							<option value="hottenanny">Hootenanny</option>
+						</select>
+					</div>
 
 					<!-- BUTTONS -->
 					<div class="text-center">

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { User } from '../class/user/user';
 
 /*
@@ -29,7 +30,7 @@ export class ConfigService {
 	}
 
 	// READ
-	public getUser(): Observable<User[]> {
+	public getAllUsers(): Observable<User[]> {
 		return this.http.get<User[]>(this.baseUrl + "user/all", this.httpOptions); // localhost:9999/user/all
 	}
 
@@ -53,6 +54,6 @@ export class ConfigService {
 
 	// DELETE
 	public deleteUserById(id: number) {
-		return this.http.delete<User>(this.baseUrl + "/user/delete/" + id) // localhost:9999/user/delete/{id}
+		return this.http.delete<User>(this.baseUrl + "/user/" + id) // localhost:9999/user/{id}
 	}
 }
