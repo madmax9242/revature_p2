@@ -16,14 +16,14 @@ class GatherupBackendApplicationTests {
 	void contextLoads() {
 	}
 	
-	@Test
-	void userTable() {
-		UserServiceImpl service = new UserServiceImpl();
-		//User daveByEmail = service.getUserByEmail("dwroble1@gmail.com");
-		User daveById = service.getUserById(0);
-		
-		//assertEquals("Dave", daveByEmail.getFirstName());
-		assertEquals("Dave", daveById.getFirstName());
-	}
+//	@Test
+//	void userTable() {
+//		UserServiceImpl service = new UserServiceImpl();
+//		User daveByEmail = service.getUserByEmail("dwroble1@gmail.com");
+//		//User daveById = service.getUserById(0);
+//		
+//		assertEquals("Dave", daveByEmail.getFirstName());
+//		//assertEquals("Dave", daveById.getFirstName());
+//	}
 
 }
