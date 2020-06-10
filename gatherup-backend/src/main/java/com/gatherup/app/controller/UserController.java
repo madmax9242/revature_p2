@@ -19,35 +19,35 @@ public class UserController {
 	private UserService userService;
 
 	// READ
-	@GetMapping("/user/all")
+	@GetMapping("/user/all") // localhost:9999/user/all
 	public List<User> getAllUsers() {
 		return userService.getAllUsers();
 	}
 
-	@GetMapping("/user/{id}")
+	@GetMapping("/user/{id}") // localhost:9999/user/{id}
 	public User getUserById(@PathVariable("id") int id) {
 		return userService.getUserById(id);
 	}
 
-	@GetMapping("user/email/{email}")
+	@GetMapping("user/email/{email}") // localhost:9999/user/email/{email}
 	public User getUserByEmail(@PathVariable("email") String email) {
 		return userService.getUserByEmail(email);
 	}
 
 	// CREATE
-	@PostMapping("/user")
+	@PostMapping("/user") // localhost:9999/user
 	public User createUser(@RequestBody User user) {
 		return userService.createUser(user);
 	}
 
-	// UPDATE
+	// UPDATE // localhost:9999/user
 	@PutMapping("/user")
 	public User updateUser(@RequestBody User user) {
 		return userService.updateUser(user);
 	}
 
 	// DELETE
-	@DeleteMapping("/user/delete/{id}")
+	@DeleteMapping("/user/{id}") // localhost:9999/user/{id}
 	public void deleteUserById(@PathVariable("id") int id) {
 		userService.deleteUserById(id);
 	}
