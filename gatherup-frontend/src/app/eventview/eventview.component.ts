@@ -20,7 +20,7 @@ export class EventviewComponent implements OnInit {
 
 	eventID: string;
 
-	constructor(private router: Router, private eventService: EventService) {
+	constructor(private eventService: EventService) {
 		this.event = new Event(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
@@ -48,17 +48,15 @@ export class EventviewComponent implements OnInit {
 
 // isHidden = false;
 // deleteEvent(index: number) {
+// 	// Note: be careful ordering things around in here; may break method
+
 // 	console.log("test() clicked.");
 
-// 	// Removes event from local array (to hide from user)
-// 	this.events.splice(index, 1);
-
-// 	// Sanity check
-// 	console.log("Current index's eventID: " + this.events[index].eventID);
-
-// 	// Assigns current index's eventID to a local variable
+// 	// Assigns to local variable and passes it as an argument to backend
 // 	this.tempID = this.events[index].eventID;
-
-// 	// Pass local variable as argument to backend
+// 	console.log("Current index's eventID: " + this.events[index].eventID);
 // 	this.eventService.deleteEventById(this.tempID).subscribe(data => { this.event = data; })
+
+// 	// Removes from local array (to hide from user)
+// 	this.events.splice(index, 1);
 // }

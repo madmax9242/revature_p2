@@ -39,6 +39,12 @@ export class RegisterComponent implements OnInit {
 		// Sanity check
 		console.log(this.user);
 
+		// Saves data to sessionStorage
+		console.log("Creating a session..");
+		sessionStorage.setItem("email", email);
+		let storageData = sessionStorage.getItem("email");
+		console.log("Stored email: " + storageData);
+
 		// POSTs constructed user to endpoint and routes to the profile view
 		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
 

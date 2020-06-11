@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { EventService } from './service/event.service';
 
-// ROOT COMPONENT
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
