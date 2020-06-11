@@ -41,6 +41,11 @@ public class UserController {
 	public User login(@RequestBody User user) {
 		return userService.login(user.getEmail(), user.getPassword());
 	}
+	
+	@PostMapping("/user/verify")
+	public User verifyUser(@RequestBody User user) {
+		return userService.verifyUser(user);
+	}
 
 	// UPDATE // localhost:9999/user
 	@PutMapping("/user")

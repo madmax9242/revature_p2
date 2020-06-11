@@ -23,5 +23,7 @@ public interface UserService {
 	public User getUserByEmail(String email);
 	
 	public User login(String email, String password);
+	
+	public User verifyUser(User user);
 
 }
