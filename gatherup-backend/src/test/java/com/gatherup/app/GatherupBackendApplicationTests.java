@@ -12,9 +12,9 @@ import com.gatherup.app.service.impl.UserServiceImpl;
 @SpringBootTest
 class GatherupBackendApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+//	@Test
+//	void contextLoads() {
+//	}
 	
 //	@Test
 //	void userTable() {
