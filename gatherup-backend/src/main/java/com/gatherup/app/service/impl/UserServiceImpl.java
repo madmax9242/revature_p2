@@ -48,4 +48,6 @@ public class UserServiceImpl implements UserService {
 	public User getUserByEmail(String email) {
 		return userDao.findUserByEmail(email).get();
 	}
+	
+
 }
