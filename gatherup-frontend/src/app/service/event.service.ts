@@ -28,6 +28,11 @@ export class EventService {
 		this.baseUrl = "http://localhost:9999/"; // sets baseUrl to the "home" endpoint
 	}
 
+	// CREATE
+	public createEvent(event: Event) {
+		return this.http.post<Event>(this.baseUrl + "event", event, this.httpOptions); // localhost:9999/event
+	}
+
 	// READ
 	public getAllEvents(): Observable<Event[]> {
 		return this.http.get<Event[]>(this.baseUrl + "event/all", this.httpOptions); // localhost:9999/event/all
@@ -35,11 +40,6 @@ export class EventService {
 
 	public getEventById(id: number): Observable<Event> {
 		return this.http.get<Event>(this.baseUrl + "event/" + id); // localhost:9999/event/{id}
-	}
-
-	// CREATE
-	public createEvent(event: Event) {
-		return this.http.post<Event>(this.baseUrl + "event", event, this.httpOptions); // localhost:9999/event
 	}
 
 	// UPDATE

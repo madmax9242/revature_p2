@@ -14,6 +14,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	// CREATE
+	@PostMapping("/user") // localhost:9999/user
+	public User createUser(@RequestBody User user) {
+		return userService.createUser(user);
+	}
+
 	// READ
 	@GetMapping("/user/all") // localhost:9999/user/all
 	public List<User> getAllUsers() {
@@ -28,12 +34,6 @@ public class UserController {
 	@GetMapping("user/email/{email}") // localhost:9999/user/email/{email}
 	public User getUserByEmail(@PathVariable("email") String email) {
 		return userService.getUserByEmail(email);
-	}
-
-	// CREATE
-	@PostMapping("/user") // localhost:9999/user
-	public User createUser(@RequestBody User user) {
-		return userService.createUser(user);
 	}
 
 	// UPDATE // localhost:9999/user

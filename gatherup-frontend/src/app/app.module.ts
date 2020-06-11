@@ -12,6 +12,7 @@ import { EventComponent } from './event/event.component';
 import { ConfigService } from './service/config.service';
 import { EventService } from './service/event.service';
 import { PasswordEncryptionService } from './service/password-encryption.service';
+import { EventviewComponent } from './eventview/eventview.component';
 
 // ROOT MODULE
 @NgModule({
@@ -20,7 +21,8 @@ import { PasswordEncryptionService } from './service/password-encryption.service
 		RegisterComponent,
 		LoginComponent,
 		ProfileComponent,
-		EventComponent
+		EventComponent,
+		EventviewComponent
 	],
 	imports: [
 		BrowserModule,

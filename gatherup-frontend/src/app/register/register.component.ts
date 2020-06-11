@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 		console.log(this.user);
 
 		// POSTs constructed user to endpoint and routes to the profile view
-		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/event"]));
+		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
 
 		// POSTs user to endpoint and assigns to a local user object
 		// this.service.createUser(this.user).subscribe(data => { this.user = data });

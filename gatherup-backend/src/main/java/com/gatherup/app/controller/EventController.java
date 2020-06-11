@@ -14,6 +14,12 @@ public class EventController {
 	@Autowired
 	private EventService service;
 
+	// CREATE
+	@PostMapping("/event") // localhost:9999/event
+	public Event createEvent(@RequestBody Event event) {
+		return service.createEvent(event);
+	}
+
 	// READ
 	@GetMapping("/event/all") // localhost:9999/event/all
 	public List<Event> getAllEvents() {
@@ -23,12 +29,6 @@ public class EventController {
 	@GetMapping("/event/{id}") // localhost:9999/event/{id}
 	public Event getEventById(@PathVariable("id") int id) {
 		return service.getEventById(id);
-	}
-
-	// CREATE
-	@PostMapping("/event") // localhost:9999/event
-	public Event createEvent(@RequestBody Event event) {
-		return service.createEvent(event);
 	}
 
 	// UPDATE

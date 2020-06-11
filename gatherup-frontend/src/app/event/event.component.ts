@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Event } from '../class/event/event';
 import { EventService } from '../service/event.service';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-event',
@@ -11,30 +13,17 @@ import { EventService } from '../service/event.service';
 export class EventComponent implements OnInit {
 
 	event: Event;
-	events: Event[];
 
-	constructor(private eventService: EventService) {
+	constructor(private router: Router, private eventService: EventService) {
 		this.event = new Event(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
-		// Upon initialization, extracts events from endpoint and inserts into events array
-		this.eventService.getAllEvents().subscribe(data => { this.events = data; });
 	}
 
-	/*
-		@Everyone, the fields being saved to an event object are:
-			eventName: string
-			eventDescription: string
-			eventLocation: string
-			dateTime: string
-			eventType: string
-		I know we have more fields for events, but a user wouldn't need to interact with them.
-		We can manually utilize those extraneous variables for associations on the server side, or something.
-	*/
-
-	addEvent() {
-		console.log("addEvent() button pressed.");
+	// CREATE
+	createEvent() {
+		console.log("create() clicked.");
 
 		// Constructs an event object based on input values
 		let eventName = (<HTMLInputElement>document.getElementById("inputEventName")).value;
@@ -47,7 +36,7 @@ export class EventComponent implements OnInit {
 		// Sanity check
 		console.log(this.event);
 
-		// POSTs event to endpoint and assigns to a local event object
-		this.eventService.createEvent(this.event).subscribe(data => this.event = data);
+		// POSTs event to endpoint and assigns to a local event object to be displayed
+		this.eventService.createEvent(this.event).subscribe(data => this.router.navigate(["/eventview"]));
 	}
 }

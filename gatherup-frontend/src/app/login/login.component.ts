@@ -42,6 +42,6 @@ export class LoginComponent implements OnInit {
 		// }
 
 		// Validates against database credentials and routes to profile page
-		this.configService.getUserByEmail(this.user.email).subscribe(data => this.router.navigate(["/profile"]));
+		this.configService.getUserByEmail(this.user.email).subscribe(data => this.router.navigate(["/eventview"]));
 	}
 }

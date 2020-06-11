@@ -3,16 +3,16 @@
 	<h1 class="jumbotron m-4">Bucket List</h1>
 
 	<!-- Event Picture -->
-	<!-- <div class="container d-flex justify-content-center my-4">
+	<div class="container d-flex justify-content-center my-4">
 		<img class="rounded mx-auto d-block" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" alt="Event Image">
-	</div> -->
+	</div>
 
 	<!-- EVENT CREATION -->
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-xl-8 mx-auto">
-				<h2>Add an Event</h2>
-				<form (ngSubmit)="addEvent()" #thisForm="ngForm">
+				<h2 class="m-4">Add an Event</h2>
+				<form (ngSubmit)="createEvent()" #thisForm="ngForm">
 					<!-- INPUT FIELDS -->
 					<div class="form-group">
 						<input [(ngModel)]="event.eventName" #eventName="ngModel" name="inputEventName" id="inputEventName" type="text" placeholder="Event Name" class="form-control rounded-pill border-0 shadow px-4" required>
@@ -38,22 +38,10 @@
 					</div>
 					<!-- BUTTONS -->
 					<div class="text-center">
-						<button class="btn btn-primary btn-block rounded-pill shadow my-4" type="submit">Add Event</button>
+						<button class="btn btn-success btn-block rounded-pill shadow my-4" type="submit">Add Event</button>
+						<button class="btn btn-secondary btn-block rounded-pill shadow my-4" type="button" [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</button>
 					</div>
 				</form>
-
-				<!-- EVENT INFORMATION -->
-				<div *ngFor="let event of events">
-					<p>Event Name: {{event?.eventName}}</p>
-					<p>Event Description: {{event?.eventDescription}}</p>
-					<p>Event Location: {{event?.eventLocation}}</p>
-					<p>Date & Time: {{event?.dateTime | date}}</p>
-					<p>Event Type: {{event?.eventType}}</p>
-
-					<p>Event: {{event | json}}</p>
-
-					<br>
-				</div>
 			</div>
 		</div>
 	</div>
