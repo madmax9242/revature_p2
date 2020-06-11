@@ -20,7 +20,6 @@ export class ConfigService {
 			'Content-Type': 'application/json',
 			'Access-Control-Allow-Origin': '*',
 			'Authorization': 'authkey',
-			'userid': '1'
 		}),
 	};
 
@@ -40,20 +39,25 @@ export class ConfigService {
 	}
 
 	public getUserById(id: number): Observable<User> {
-		return this.http.get<User>(this.baseUrl + "user/" + id); // localhost:9999/user/{id}
+		return this.http.get<User>(this.baseUrl + "user/" + id, this.httpOptions); // localhost:9999/user/{id}
 	}
 
 	public getUserByEmail(email: string): Observable<User> {
-		return this.http.get<User>(this.baseUrl + "user/email/" + email); // localhost:9999/user/email/{email}
+		return this.http.get<User>(this.baseUrl + "user/email/" + email, this.httpOptions); // localhost:9999/user/email/{email}
 	}
 
 	// UPDATE
 	public updateUser(user: User) {
-		return this.http.put<User>(this.baseUrl + "user", user); // localhost:9999/user
+		return this.http.put<User>(this.baseUrl + "user", user, this.httpOptions); // localhost:9999/user
 	}
 
 	// DELETE
 	public deleteUserById(id: number) {
-		return this.http.delete<User>(this.baseUrl + "/user/" + id) // localhost:9999/user/{id}
+		return this.http.delete<User>(this.baseUrl + "user/" + id, this.httpOptions) // localhost:9999/user/{id}
+	}
+
+	// LOGIN
+	public login(user: User): Observable<User> {
+		return this.http.post<User>(this.baseUrl + "user/login", user, this.httpOptions); // localhost:9999/user/login/
 	}
 }

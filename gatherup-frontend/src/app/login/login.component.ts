@@ -12,10 +12,9 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 })
 export class LoginComponent implements OnInit {
 
-	// For login()
 	user: User;
 
-	constructor(private configService: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
+	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
 		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
 	login() {
 		console.log("login() button pressed.");
 
-		// Constructs a user object to validate credentials
+		// Constructs a user object
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
 		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
 		this.user = new User(undefined, email, this.encryptionService.encrypt(password), undefined, undefined, undefined);
@@ -33,15 +32,15 @@ export class LoginComponent implements OnInit {
 		// Sanity check
 		console.log(this.user);
 
-		// Validates against hard-coded credentials
-		// if (this.user.email == "hello@world.com" && this.user.password == "p4ssw0rd") {
-		// 	alert('Login success!\n\n' + JSON.stringify(this.user, null, 4));
-		// 	location.href = "/profile"; // routes accordingly
-		// } else {
-		// 	alert("Invalid credentials!")
-		// }
-
-		// Validates against database credentials and routes to profile page
-		this.configService.getUserByEmail(this.user.email).subscribe(data => this.router.navigate(["/eventview"]));
+		// Sends user object to backend and routes to event view
+		this.configService.login(this.user).subscribe(data => this.router.navigate(["/eventview"]));
 	}
 }
+
+// Validates against hard-coded credentials
+// if (this.user.email == "hello@world.com" && this.user.password == "p4ssw0rd") {
+// 	alert('Login success!\n\n' + JSON.stringify(this.user, null, 4));
+// 	location.href = "/profile"; // routes accordingly
+// } else {
+// 	alert("Invalid credentials!")
+// }

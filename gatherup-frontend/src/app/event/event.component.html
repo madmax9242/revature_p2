@@ -1,17 +1,12 @@
-<div class="container p-2" id="box">
-	<!-- Event Heading -->
-	<h1 class="jumbotron display-4 m-4">Bucket List</h1>
-
-	<!-- Event Picture -->
-	<div class="container d-flex justify-content-center my-4">
-		<img class="rounded mx-auto d-block" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" width="50%" alt="Event Image">
+<div class="container p-2 shadow">
+	<div class="container d-flex justify-content-center m-4">
+		<img class="rounded mx-auto d-block shadow" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" width="50%" alt="Event Image">
 	</div>
-
 	<!-- EVENT CREATION -->
-	<div class="container">
+	<div class="container ">
 		<div class="row">
 			<div class="col-6 mx-auto">
-				<h2 class="title m-4">Add an Event</h2>
+				<h2 class="m-4">Add an Event</h2>
 				<form (ngSubmit)="createEvent()" #thisForm="ngForm">
 					<!-- INPUT FIELDS -->
 					<div class="form-group">
@@ -38,11 +33,16 @@
 						</select>
 					</div>
 					<!-- BUTTONS -->
-					<div class="text-center">
-						<button class="btn btn-success btn-block shadow my-4" type="submit">Add Event</button>
-						<button class="btn btn-secondary btn-block shadow my-4" type="button" [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</button>
+					<div class="container col-6 my-4">
+						<button class="btn btn-success btn-block shadow" type="submit">Add</button>
+						<button class="btn btn-warning btn-block shadow" type="reset">Reset</button>
 					</div>
 				</form>
+				<hr>
+				<!-- ROUTING -->
+				<div class="container col-6 my-4">
+					<button class="btn btn-primary btn-block shadow" type="button" [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</button>
+				</div>
 			</div>
 		</div>
 	</div>

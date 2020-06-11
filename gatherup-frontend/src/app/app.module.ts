@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // enables form features for app
-import { HttpClientModule } from '@angular/common/http'; // enables HTTP functionality for app
-import { AppRoutingModule } from './app-routing.module'; // enables routing functionality for app
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -29,7 +29,11 @@ import { EventviewComponent } from './eventview/eventview.component';
 		HttpClientModule,
 		AppRoutingModule,
 	],
-	providers: [ConfigService, EventService, PasswordEncryptionService], // make providers global
+	providers: [
+		ConfigService,
+		EventService,
+		PasswordEncryptionService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
