@@ -19,4 +19,5 @@ public interface EventService {
 	public List<Event> getAllEvents();
 
 	public Event getEventById(int id);
+
 }

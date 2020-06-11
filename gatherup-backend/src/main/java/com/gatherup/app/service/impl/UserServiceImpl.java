@@ -1,7 +1,6 @@
 package com.gatherup.app.service.impl;
 
 import com.gatherup.app.dao.UserDao;
-import com.gatherup.app.model.Event;
 import com.gatherup.app.model.User;
 import com.gatherup.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +17,14 @@ public class UserServiceImpl implements UserService {
 //	@Autowired
 //	private UserEmailDao userEmailDao;
 
-
 	// CREATE
 	@Override
 	public User createUser(User user) {
 		User retUsr = null;
-		if(getUserByEmail(user.getEmail()) == null){
+		if (getUserByEmail(user.getEmail()) == null) {
 			retUsr = userDao.save(user);
 			System.out.println("I am creating a new user");
-		}else {
+		} else {
 			System.out.println("I already exist");
 		}
 		return retUsr;
@@ -70,25 +68,24 @@ public class UserServiceImpl implements UserService {
 		}
 		return retUser;
 	}
-	
+
 	@Override
 	public User login(String email, String password) {
 		User retUser = null;
 		//Gets user by email
 		System.out.println("Email: " + email + " Password: " + password);
 		User usr = getUserByEmail(email);
-		if(usr == null) {
+		if (usr == null) {
 			System.out.println("I am null");
-		}else {
+		} else {
 			System.out.println("I am here");
 		}
 		//System.out.println(usr.getFirstName());
-		if(!usr.getEmail().equals(null)) {
-			if(usr.getPassword().equals(password)) {
+		if (!usr.getEmail().equals(null)) {
+			if (usr.getPassword().equals(password)) {
 				retUser = usr;
 			}
-			
-		}else {
+		} else {
 			return null;
 		}
 		return null;
@@ -97,12 +94,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User verifyUser(User user) {
 		User u1 = userDao.findUserByEmail(user.getEmail());
-		if(u1 != null && u1.getPassword().equals(user.getPassword())) {
+		if (u1 != null && u1.getPassword().equals(user.getPassword())) {
 			System.out.println("Success");
 			return u1;
 		}
+		System.out.println("Unsuccessful");
 		return null;
 	}
-	
-
 }

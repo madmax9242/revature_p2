@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
 		// Sanity check
 		console.log(this.user);
 
-		if (this.user) {
+		if (this.user != null) {
 			// Saves data (email) to a session
 			sessionStorage.setItem("email", email);
 			let sessionKey = sessionStorage.getItem("email");
