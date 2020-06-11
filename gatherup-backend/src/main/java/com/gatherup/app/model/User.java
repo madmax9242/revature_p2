@@ -2,7 +2,7 @@ package com.gatherup.app.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "User_Table")
 @Table
 public class User {
 

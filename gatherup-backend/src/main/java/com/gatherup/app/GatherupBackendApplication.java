@@ -11,5 +11,6 @@ public class GatherupBackendApplication {
 		SpringApplication.run(GatherupBackendApplication.class, args);
 
 		System.out.println("Hello, GatherUp!");
+		
 	}
 }
