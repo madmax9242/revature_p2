@@ -29,6 +29,11 @@ export class ConfigService {
 		this.baseUrl = "http://localhost:9999/"; // sets baseUrl to the "home" endpoint
 	}
 
+	// CREATE
+	public createUser(user: User) {
+		return this.http.post<User>(this.baseUrl + "user", user, this.httpOptions); // localhost:9999/user
+	}
+
 	// READ
 	public getAllUsers(): Observable<User[]> {
 		return this.http.get<User[]>(this.baseUrl + "user/all", this.httpOptions); // localhost:9999/user/all
@@ -40,11 +45,6 @@ export class ConfigService {
 
 	public getUserByEmail(email: string): Observable<User> {
 		return this.http.get<User>(this.baseUrl + "user/email/" + email); // localhost:9999/user/email/{email}
-	}
-
-	// CREATE
-	public createUser(user: User) {
-		return this.http.post<User>(this.baseUrl + "user", user, this.httpOptions); // localhost:9999/user
 	}
 
 	// UPDATE

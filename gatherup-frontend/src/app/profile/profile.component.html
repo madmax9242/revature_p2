@@ -1,22 +1,21 @@
 <div class="container">
-	<div class="card">
+	<div class="card" style="width: 18rem;">
+		<img class="card-img-top p-4" src="https://gatherup.com/wp-content/themes/gatherup/assets/images/GatherUp-Logo.svg" alt="Card Image">
 		<div class="card-body">
-
+			<h4 class="card-title mb-4">Profile Information</h4>
 			<!-- USER INFORMATION -->
-			<div class="text-left">
-				<div *ngFor="let user of users">
-					<p>Email: {{user?.email}}</p>
-					<p>Password: {{user?.password}}</p>
-					<p>First Name: {{user?.firstName}}</p>
-					<p>Last Name: {{user?.lastName}}</p>
-					<p>Contact: {{user?.contact}}</p>
-
-					<br>
-
-					<!-- Note: to print response as JSON, use the built in json pipe -->
-					<p>User: {{user | json}}</p>
-				</div>
+			<div *ngFor="let user of users" class="text-left">
+				<p><strong>Email: </strong>{{user?.email}}</p>
+				<p><strong>Password: </strong>{{user?.password}}</p>
+				<p><strong>First Name: </strong>{{user?.firstName}}</p>
+				<p><strong>Last Name: </strong>{{user?.lastName}}</p>
+				<p><strong>Contact: </strong>{{user?.contact}}</p>
+				<!-- To print raw JSON -->
+				<!-- <p>User: {{user | json}}</p> -->
 			</div>
+
+			<!-- BUTTONS -->
+			<button class="btn btn-primary btn-block mt-4" [routerLink]="['/event']" routerLinkActive="router-link-active">My Events</button>
 		</div>
 	</div>
 </div>
