@@ -14,7 +14,6 @@ import { EventService } from './service/event.service';
 import { PasswordEncryptionService } from './service/password-encryption.service';
 import { EventviewComponent } from './eventview/eventview.component';
 
-// ROOT MODULE
 @NgModule({
 	declarations: [
 		AppComponent,

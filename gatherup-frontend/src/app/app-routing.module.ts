@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { EventviewComponent } from './eventview/eventview.component';
 
 const routes: Routes = [
-	{ path: 'index', component: AppComponent },
+	{ path: 'home', component: AppComponent },
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'profile', component: ProfileComponent },

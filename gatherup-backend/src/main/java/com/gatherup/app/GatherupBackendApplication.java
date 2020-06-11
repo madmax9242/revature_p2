@@ -12,5 +12,4 @@ public class GatherupBackendApplication {
 
 		System.out.println("Hello, GatherUp!");
 	}
-
 }

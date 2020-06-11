@@ -1,45 +1,46 @@
 <div class="container p-2" id="box">
 	<!-- Event Heading -->
-	<h1 class="jumbotron m-4">Bucket List</h1>
+	<h1 class="jumbotron display-4 m-4">Bucket List</h1>
 
 	<!-- Event Picture -->
 	<div class="container d-flex justify-content-center my-4">
-		<img class="rounded mx-auto d-block" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" alt="Event Image">
+		<img class="rounded mx-auto d-block" width="98%" src="https://w.wallhaven.cc/full/5w/wallhaven-5w6j85.jpg" width="50%" alt="Event Image">
 	</div>
 
 	<!-- EVENT CREATION -->
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-10 col-xl-8 mx-auto">
-				<h2 class="m-4">Add an Event</h2>
+			<div class="col-6 mx-auto">
+				<h2 class="title m-4">Add an Event</h2>
 				<form (ngSubmit)="createEvent()" #thisForm="ngForm">
 					<!-- INPUT FIELDS -->
 					<div class="form-group">
-						<input [(ngModel)]="event.eventName" #eventName="ngModel" name="inputEventName" id="inputEventName" type="text" placeholder="Event Name" class="form-control rounded-pill border-0 shadow px-4" required>
+						<input [(ngModel)]="event.eventName" #eventName="ngModel" name="inputEventName" id="inputEventName" type="text" placeholder="Event Name" class="form-control border-0 shadow px-4" required>
 					</div>
 					<div class="form-group">
-						<input [(ngModel)]="event.eventDescription" #eventDescription="ngModel" name="inputEventDescription" id="inputEventDescription" type="text" placeholder="Event Description" class="form-control rounded-pill border-0 shadow px-4" required>
+						<input [(ngModel)]="event.eventDescription" #eventDescription="ngModel" name="inputEventDescription" id="inputEventDescription" type="text" placeholder="Event Description" class="form-control border-0 shadow px-4" required>
 					</div>
 					<div class="form-group">
-						<input [(ngModel)]="event.eventLocation" #eventLocation="ngModel" name="inputEventLocation" id="inputEventLocation" type="text" placeholder="Event Location" class="form-control rounded-pill border-0 shadow px-4" required>
+						<input [(ngModel)]="event.eventLocation" #eventLocation="ngModel" name="inputEventLocation" id="inputEventLocation" type="text" placeholder="Event Location" class="form-control border-0 shadow px-4" required>
 					</div>
 					<div class="form-group">
-						<input [(ngModel)]="event.dateTime" #dateTime="ngModel" name="inputDateTime" id="inputDateTime" type="datetime-local" class="form-control rounded-pill border-0 shadow px-4" required>
+						<input [(ngModel)]="event.dateTime" #dateTime="ngModel" name="inputDateTime" id="inputDateTime" type="datetime-local" class="form-control border-0 shadow px-4" required>
 					</div>
 					<div class="form-group">
-						<select [(ngModel)]="event.eventType" #eventType="ngModel" name="inputEventType" id="inputEventType" class="form-control rounded-pill border-0 shadow px-4">
+						<select [(ngModel)]="event.eventType" #eventType="ngModel" name="inputEventType" id="inputEventType" class="form-control border-0 shadow px-4">
 							<option value="Generic Event">Generic Event</option>
 							<option value="Outdoors">Outdoors</option>
+							<option value="Bar">Bar</option>
+							<option value="Brunch">Brunch</option>
 							<option value="Party">Party</option>
 							<option value="Game Night">Game Night</option>
-							<option value="Bar">Bar</option>
 							<option value="Hootenanny">Hootenanny</option>
 						</select>
 					</div>
 					<!-- BUTTONS -->
 					<div class="text-center">
-						<button class="btn btn-success btn-block rounded-pill shadow my-4" type="submit">Add Event</button>
-						<button class="btn btn-secondary btn-block rounded-pill shadow my-4" type="button" [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</button>
+						<button class="btn btn-success btn-block shadow my-4" type="submit">Add Event</button>
+						<button class="btn btn-secondary btn-block shadow my-4" type="button" [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</button>
 					</div>
 				</form>
 			</div>
