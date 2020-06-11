@@ -19,6 +19,7 @@ export class EventComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		// TODO: GET request to backend using saved email; take that object and use it to populate events
 	}
 
 	// CREATE

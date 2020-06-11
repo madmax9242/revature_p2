@@ -25,9 +25,10 @@ export class EventviewComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		// Upon initialization, extracts all events from endpoint and assign to local event array
 		this.eventService.getAllEvents().subscribe(data => { this.events = data; });
 
-		this.tempID = this.event.eventID;
+		// this.tempID = this.event.eventID;
 	}
 
 	isHidden = false;

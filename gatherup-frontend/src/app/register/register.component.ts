@@ -15,10 +15,9 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 })
 export class RegisterComponent implements OnInit {
 
-	// For register()
 	user: User;
 
-	constructor(private configService: ConfigService, private router: Router, private encryptionService: PasswordEncryptionService) {
+	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
 		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
@@ -39,14 +38,17 @@ export class RegisterComponent implements OnInit {
 		// Sanity check
 		console.log(this.user);
 
-		// Saves data to sessionStorage
-		console.log("Creating a session..");
-		sessionStorage.setItem("email", email);
-		let storageData = sessionStorage.getItem("email");
-		console.log("Stored email: " + storageData);
+		if (this.user) {
+			// Saves data (email) to a session
+			sessionStorage.setItem("email", email);
+			let sessionKey = sessionStorage.getItem("email");
+			console.log("Stored key: " + sessionKey);
 
-		// POSTs constructed user to endpoint and routes to the profile view
-		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
+			// POSTs constructed user to endpoint and routes to the profile view
+			this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
+		} else {
+			alert("User already exists in the system.")
+		}
 
 		// POSTs user to endpoint and assigns to a local user object
 		// this.service.createUser(this.user).subscribe(data => { this.user = data });

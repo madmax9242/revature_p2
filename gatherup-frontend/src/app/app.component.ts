@@ -9,13 +9,12 @@ import { EventService } from './service/event.service';
 export class AppComponent {
 
 	title: 'GatherUp';
+	subTitle: 'Not a Meetup Clone';
 
 	constructor(private eventService: EventService) {
 
 	}
 
 	ngOnInit() {
-		// this.eventService.getAllEvents().subscribe(data => { this.events = data; });
-
 	}
 }
