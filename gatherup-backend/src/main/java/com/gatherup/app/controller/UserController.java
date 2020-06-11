@@ -31,9 +31,15 @@ public class UserController {
 		return userService.getUserById(id);
 	}
 
-	@GetMapping("user/email/{email}") // localhost:9999/user/email/{email}
+	@GetMapping("/user/email/{email}") // localhost:9999/user/email/{email}
 	public User getUserByEmail(@PathVariable("email") String email) {
+		System.out.println("From UserController: " + email);
 		return userService.getUserByEmail(email);
+	}
+	
+	@PostMapping("/user/login") // localhost:9999/user/login
+	public User login(@RequestBody User user) {
+		return userService.login(user.getEmail(), user.getPassword());
 	}
 
 	// UPDATE // localhost:9999/user
