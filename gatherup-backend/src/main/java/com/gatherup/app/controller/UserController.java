@@ -19,6 +19,12 @@ public class UserController {
 	public User createUser(@RequestBody User user) {
 		return userService.createUser(user);
 	}
+	
+	@PostMapping("/user/login")
+	public User verifyUser(@RequestBody User user) {
+		return userService.verifyUser(user);
+		
+	}
 
 	// READ
 	@GetMapping("/user/all") // localhost:9999/user/all

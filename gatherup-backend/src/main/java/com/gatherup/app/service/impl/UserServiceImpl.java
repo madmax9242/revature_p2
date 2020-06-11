@@ -46,7 +46,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByEmail(String email) {
-		return userDao.findUserByEmail(email).get();
+		return userDao.findUserByEmail(email);
+	}
+	@Override
+	public User verifyUser(User user) {
+		User u1 = userDao.findUserByEmail(user.getEmail());
+		
+		if(u1 != null && u1.getPassword().equals(user.getPassword())) {
+			System.out.println("Success");
+			return u1;
+		}
+		
+		return null;
 	}
 	
 
