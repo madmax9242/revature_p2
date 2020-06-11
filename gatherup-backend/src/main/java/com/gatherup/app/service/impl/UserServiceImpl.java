@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
 	// DELETE
 	@Override
 	public void deleteUserById(int id) {
-		userDao.deleteById(String.valueOf(id));
+		userDao.deleteById(id);
 	}
 
 	// READ
@@ -40,17 +41,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserById(int id) {
-		return userDao.findById(String.valueOf(id)).get();
+		return userDao.findById(id).get();
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
-		List<User> userList = userDao.findAll();
-		for (User user : userList) {
-			if (user.getEmail().equals(email)) {
-				return user;
-			}
-		}
-		return null;
+		return userDao.findUserByEmail(email).get();
 	}
 }
