@@ -33,6 +33,7 @@ public class UserController {
 
 	@GetMapping("user/email/{email}") // localhost:9999/user/email/{email}
 	public User getUserByEmail(@PathVariable("email") String email) {
+		User checkUser = getUserByEmail(email);
 		return userService.getUserByEmail(email);
 	}
 
