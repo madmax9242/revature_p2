@@ -12,11 +12,10 @@ import { Event } from '../class/event/event';
 export class EventviewComponent implements OnInit {
 
 	event: Event;
-	events: Event[];
+	events: Event[] = [];
 
 	tempID: any;
 	tempArray: Event[];
-
 
 	eventID: string;
 
@@ -25,8 +24,15 @@ export class EventviewComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		// Upon initialization, extracts all events from endpoint and assign to local event array
-		this.eventService.getAllEvents().subscribe(data => { this.events = data; });
+		this.eventService.getAllEvents().subscribe(data => {
+			console.log("ALL EVENTS FROM DATABASE: ");
+			for (let i in data) {
+				console.log(data[i]);
+				if (data[i].userEmail == sessionStorage.getItem("email")) {
+					this.events.push(data[i]);
+				}
+			}
+		})
 	}
 
 	isHidden = false;

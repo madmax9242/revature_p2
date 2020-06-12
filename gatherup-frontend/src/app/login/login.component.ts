@@ -12,11 +12,9 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 })
 export class LoginComponent implements OnInit {
 
-	user: User;
-	tempUser: User;
+	user: User = new User(0, "", "", "", "", "");
 
 	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
-		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
@@ -25,37 +23,38 @@ export class LoginComponent implements OnInit {
 	login() {
 		console.log("--- login() button pressed ---");
 
+		// Constructs a user object based on input values
+		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+		let user: User = new User(undefined, email, password, undefined, undefined, undefined);
+
 		// Sanity check
-		console.log("TO BACKEND: ");
-		console.log(this.user);
+		console.log("SENDING USER TO BACKEND: ");
+		console.log(user);
 
-		// NO VALIDATION METHOD (WORKS)
-		this.configService.login(this.user).subscribe(data => this.router.navigate(["/eventview"]));
+		// Validates and routes accordingly
+		this.configService.login(user).subscribe(data => {
+			console.log("USER FROM DATABASE: ");
+			console.log(data);
+			if (data != null) {
+				console.log("Successful login.");
 
-		// // VALIDATION METHOD (NOT WORKING)
-		// this.configService.login(this.user).subscribe(data => this.tempUser = data);
-		// console.log("FROM DATABASE: ");
-		// console.log(this.tempUser);
+				// Saves data (email) to a session
+				sessionStorage.setItem("email", email);
+				let sessionKey = sessionStorage.getItem("email");
+				console.log("Stored key: " + sessionKey);
 
-		// // Checks response object
-		// if (this.tempUser != null) {
-		// 	console.log("Successful login.");
-
-		// 	// Saves data (email) to a session
-		// 	sessionStorage.setItem("email", this.tempUser.email);
-		// 	let sessionKey = sessionStorage.getItem("email");
-		// 	console.log("Stored key: " + sessionKey);
-
-		// 	// Route
-		// 	this.router.navigate(["/eventview"]);
-		// } else {
-		// 	console.log("Failed login.");
-		// 	alert("Invalid credentials!");
-		// }
+				// Route
+				this.router.navigate(["/eventview"]);
+			} else {
+				console.log("Failed login.");
+				alert("Invalid credentials!");
+			}
+		});
 	}
 }
 
-// // Constructs a user object based on input values; NOT NEEDED ANYMORE B/C TWO-WAY BINDING
+// // Constructs a user object based on input values
 // let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
 // let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
 // this.user.email = email;
