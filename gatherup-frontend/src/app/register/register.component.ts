@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 
 import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
@@ -14,7 +15,14 @@ export class RegisterComponent implements OnInit {
 
 	user: User = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 
-	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
+	constructor(private router: Router, private loggy: NGXLogger, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
+		this.loggy.trace("w0w a TRACE message.");
+		this.loggy.debug("w0w a DEBUG message.");
+		this.loggy.info("w0w an INFO message.");
+		this.loggy.log("w0w a LOG message.");
+		this.loggy.warn("w0w a WARN message.");
+		// this.loggy.error("w0w an ERROR message.");
+		// this.loggy.fatal("w0w a FATAL message.");
 	}
 
 	ngOnInit(): void {
