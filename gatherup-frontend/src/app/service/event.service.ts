@@ -30,25 +30,45 @@ export class EventService {
 
 	// CREATE
 	public createEvent(event: Event) {
-		return this.http.post<Event>(this.baseUrl + "event", event, this.httpOptions); // localhost:9999/event
+		try {
+			return this.http.post<Event>(this.baseUrl + "event", event, this.httpOptions); // localhost:9999/event
+		} catch (error) {
+			console.log("EventService createEvent() error: " + error);
+		}
 	}
 
 	// READ
 	public getAllEvents(): Observable<Event[]> {
-		return this.http.get<Event[]>(this.baseUrl + "event/all", this.httpOptions); // localhost:9999/event/all
+		try {
+			return this.http.get<Event[]>(this.baseUrl + "event/all", this.httpOptions); // localhost:9999/event/all
+		} catch (error) {
+			console.log("EventService getAllEvents() error: " + error);
+		}
 	}
 
 	public getEventById(id: number): Observable<Event> {
-		return this.http.get<Event>(this.baseUrl + "event/" + id); // localhost:9999/event/{id}
+		try {
+			return this.http.get<Event>(this.baseUrl + "event/" + id); // localhost:9999/event/{id}
+		} catch (error) {
+			console.log("EventService getEventById() error: " + error);
+		}
 	}
 
 	// UPDATE
 	public updateEvent(event: Event) {
-		return this.http.put<Event>(this.baseUrl + "event", event); // localhost:9999/event
+		try {
+			return this.http.put<Event>(this.baseUrl + "event", event); // localhost:9999/event
+		} catch (error) {
+			console.log("EventService updateEvent() error: " + error);
+		}
 	}
 
 	// DELETE
 	public deleteEventById(id: number) {
-		return this.http.delete<Event>(this.baseUrl + "/event/" + id) // localhost:9999/event/{id}
+		try {
+			return this.http.delete<Event>(this.baseUrl + "/event/" + id) // localhost:9999/event/{id}
+		} catch (error) {
+			console.log("EventService deleteEventById() error: " + error);
+		}
 	}
 }

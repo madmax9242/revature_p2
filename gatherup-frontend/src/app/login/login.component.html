@@ -10,14 +10,18 @@
 				<!-- LOGIN-->
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-10 col-xl-8 mx-auto">
+						<div class="col-8 mx-auto">
 							<h3 class="display-4">Login</h3>
 							<form (ngSubmit)="login()" #thisForm="ngForm">
 								<!-- INPUT FIELDS -->
 								<div class="form-group">
-									<input [(ngModel)]="user.email" #email="ngModel" name="inputEmail" id="inputEmail" type="email" placeholder="Email address" class="form-control rounded-pill border-0 shadow my-3 px-4" required>
+									<input [(ngModel)]="user.email" #email="ngModel" name="inputEmail" id="inputEmail" type="email" placeholder="Email address" class="form-control rounded-pill border-0 shadow my-3 px-4" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
 									<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1 p-1 text-center text-muted">
 										<div *ngIf="email.errors.required">Email is required!</div>
+										<!-- PatternValidator -->
+										<div *ngIf="email.errors?.pattern">
+											Email must be in [email@domain.info] format.
+										</div>
 									</div>
 								</div>
 								<div class="form-group">
