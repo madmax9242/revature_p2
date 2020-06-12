@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 				console.log("Stored key: " + sessionKey);
 
 				// Route
-				this.router.navigate(["/eventview"]);
+				window.location.assign("/eventview")
 			} else {
 				console.log("Failed login.");
 				alert("Invalid credentials!");
