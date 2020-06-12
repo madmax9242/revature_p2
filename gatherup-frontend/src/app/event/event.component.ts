@@ -19,7 +19,6 @@ export class EventComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		// TODO: GET request to backend using saved email; take that object and use it to populate events
 	}
 
 	// CREATE
@@ -32,7 +31,7 @@ export class EventComponent implements OnInit {
 		let eventLocation = (<HTMLInputElement>document.getElementById("inputEventLocation")).value;
 		let dateTime = (<HTMLInputElement>document.getElementById("inputDateTime")).value;
 		let eventType = (<HTMLInputElement>document.getElementById("inputEventType")).value;
-		this.event = new Event(undefined, undefined, eventName, eventDescription, eventLocation, dateTime, eventType);
+		this.event = new Event(sessionStorage.getItem("email"), undefined, eventName, eventDescription, eventLocation, dateTime, eventType);
 
 		// Sanity check
 		console.log(this.event);

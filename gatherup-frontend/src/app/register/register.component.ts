@@ -12,11 +12,9 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 })
 export class RegisterComponent implements OnInit {
 
-	user: User;
-	tempUser: User;
+	user: User = new User(0, "", "", "", "", "");
 
 	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
-		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
@@ -25,33 +23,37 @@ export class RegisterComponent implements OnInit {
 	register() {
 		console.log("--- register() button pressed ---");
 
+		// Constructs a user object based on input values
+		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
+		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
+		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
+		let user: User = new User(undefined, email, password, firstName, lastName, contact);
+
 		// Sanity check
-		console.log("TO BACKEND: ");
-		console.log(this.user);
+		console.log("SENDING USER TO BACKEND: ");
+		console.log(user);
 
-		// NO VALIDATION METHOD (WORKS)
-		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
+		// Validates and route accordingly
+		this.configService.createUser(user).subscribe(data => {
+			console.log("USER FROM DATABASE: ");
+			console.log(data);
+			if (data != null) {
+				console.log("Registration success.");
 
-		// // VALIDATION METHOD (NOT WORKING)
-		// this.configService.createUser(this.user).subscribe(data => this.tempUser = data);
-		// console.log("FROM DATABASE: ");
-		// console.log(this.tempUser);
+				// Saves data (email) to a session
+				sessionStorage.setItem("email", email);
+				let sessionKey = sessionStorage.getItem("email");
+				console.log("Stored key: " + sessionKey);
 
-		// // Checks response object
-		// if (this.tempUser != null) {
-		// 	console.log("Successful login.");
-
-		// 	// Saves data (email) to a session
-		// 	sessionStorage.setItem("email", this.tempUser.email);
-		// 	let sessionKey = sessionStorage.getItem("email");
-		// 	console.log("Stored key: " + sessionKey);
-
-		// 	// Route
-		// 	this.router.navigate(["/profile"]);
-		// } else {
-		// 	console.log("Failed login.");
-		// 	alert("Invalid credentials!");
-		// }
+				// Route
+				this.router.navigate(["/profile"]);
+			} else {
+				console.log("Registration failed.");
+				alert("Registration failed!");
+			}
+		});
 	}
 }
 
@@ -62,6 +64,3 @@ export class RegisterComponent implements OnInit {
 // let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
 // let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
 // this.user = new User(undefined, email, password, firstName, lastName, contact);
-
-// POSTs user to endpoint and assigns to a local user object
-// this.service.createUser(this.user).subscribe(data => { this.user = data });

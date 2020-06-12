@@ -18,11 +18,11 @@ export class ProfileComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Automatically grabs key from sessionStorage
-		let sessionKeyValue = sessionStorage.getItem("email");
-		console.log("Current sessionKeyValue: " + sessionKeyValue);
+		let sessionKey = sessionStorage.getItem("email");
+		console.log("Current sessionKey: " + sessionKey);
 
 		// Extracts user from endpoint and assigns to local object
-		this.configService.getUserByEmail(sessionKeyValue).subscribe(data => this.user = data);
+		this.configService.getUserByEmail(sessionKey).subscribe(data => this.user = data);
 	}
 
 	logOut() {
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
 		console.log("clearedKey: " + clearedKey);
 
 		// Routes
-		this.router.navigate(["/"]);
+		this.router.navigate(["/login"]);
 	}
 }
 
