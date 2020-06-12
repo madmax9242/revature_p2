@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
 				console.log("Stored key: " + sessionKey);
 
 				// Route
-				this.router.navigate(["/profile"]);
+				window.location.assign("/profile")
 			} else {
 				console.log("Registration failed.");
 				alert("Registration failed!");

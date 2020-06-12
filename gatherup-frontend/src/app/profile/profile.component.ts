@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+
 		// Automatically grabs key from sessionStorage
 		let sessionKey = sessionStorage.getItem("email");
 		console.log("Current sessionKey: " + sessionKey);
@@ -38,7 +39,7 @@ export class ProfileComponent implements OnInit {
 		console.log("clearedKey: " + clearedKey);
 
 		// Routes
-		this.router.navigate(["/login"]);
+		window.location.assign("/login")
 	}
 }
 

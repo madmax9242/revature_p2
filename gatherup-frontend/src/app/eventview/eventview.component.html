@@ -1,5 +1,5 @@
 <!-- EVENT VIEW -->
-<div class="container p-2 shadow">
+<div class="container shadow bg-light p-2 my-5">
 	<div class="container">
 		<div class="display-4 text-center m-4">
 			My Events
@@ -7,7 +7,7 @@
 		<div class="container col-8">
 			<div *ngFor="let event of events; let i=index">
 				<div *ngIf="!isHidden" class="card p-4 my-4 border-0 shadow">
-					<p><strong>TODO: HIDE ME - Event ID: </strong>{{event?.eventID}}</p>
+					<p hidden><strong>Event ID: </strong>{{event?.eventID}}</p>
 					<p><strong>Event Name: </strong>{{event?.eventName}}</p>
 					<p><strong>Event Description: </strong>{{event?.eventDescription}}</p>
 					<p><strong>Event Location: </strong>{{event?.eventLocation}}</p>
@@ -20,10 +20,10 @@
 			</div>
 		</div>
 
-		<!-- BUTTONS -->
-		<div class="container col-4">
+		<!-- ROUTING -->
+		<!-- <div class="container col-4">
 			<button class="btn btn-success btn-block shadow my-4" type="button" [routerLink]="['/event']" routerLinkActive="router-link-active">Add a New Event</button>
 			<button class="btn btn-primary btn-block shadow my-4" type="button" [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</button>
-		</div>
+		</div> -->
 	</div>
 </div>

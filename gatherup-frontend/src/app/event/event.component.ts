@@ -36,7 +36,7 @@ export class EventComponent implements OnInit {
 		// Sanity check
 		console.log(this.event);
 
-		// POSTs event to endpoint and assigns to a local event object to be displayed
+		// POSTs event to endpoint and routes to event view
 		this.eventService.createEvent(this.event).subscribe(data => this.router.navigate(["/eventview"]));
 	}
 }
