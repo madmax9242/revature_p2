@@ -37,6 +37,6 @@ export class AppComponent {
 		console.log("clearedKey: " + clearedKey);
 
 		// Routes
-		window.location.href = "/login";
+		window.location.assign("/login");
 	}
 }

@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
 				window.location.assign("/profile")
 			} else {
 				console.log("Registration failed.");
-				alert("Registration failed!");
+				alert("User already exists. Try logging in instead?");
 			}
 		});
 	}
