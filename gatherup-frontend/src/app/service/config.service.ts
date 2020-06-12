@@ -25,39 +25,71 @@ export class ConfigService {
 
 	// Boots HttpClient upon creation
 	constructor(private http: HttpClient) {
-		this.baseUrl = "http://localhost:9999/"; // sets baseUrl to the "home" endpoint
+		// Development endpoint
+		// this.baseUrl = "http://localhost:9999/";
+
+		// Production endpoint
+		this.baseUrl = "http://ec2-18-217-122-210.us-east-2.compute.amazonaws.com:9999/";
 	}
 
 	// CREATE
 	public createUser(user: User) {
-		return this.http.post<User>(this.baseUrl + "user", user, this.httpOptions); // localhost:9999/user
+		try {
+			return this.http.post<User>(this.baseUrl + "user", user, this.httpOptions); // localhost:9999/user
+		} catch (error) {
+			console.log("ConfigService createUser() error: " + error);
+		}
 	}
 
 	// READ
 	public getAllUsers(): Observable<User[]> {
-		return this.http.get<User[]>(this.baseUrl + "user/all", this.httpOptions); // localhost:9999/user/all
+		try {
+			return this.http.get<User[]>(this.baseUrl + "user/all", this.httpOptions); // localhost:9999/user/all
+		} catch (error) {
+			console.log("ConfigService getAllUsers() error: " + error);
+		}
 	}
 
 	public getUserById(id: number): Observable<User> {
-		return this.http.get<User>(this.baseUrl + "user/" + id, this.httpOptions); // localhost:9999/user/{id}
+		try {
+			return this.http.get<User>(this.baseUrl + "user/" + id, this.httpOptions); // localhost:9999/user/{id}
+		} catch (error) {
+			console.log("ConfigService getUserById() error: " + error);
+		}
 	}
 
 	public getUserByEmail(email: string): Observable<User> {
-		return this.http.get<User>(this.baseUrl + "user/email/" + email, this.httpOptions); // localhost:9999/user/email/{email}
+		try {
+			return this.http.get<User>(this.baseUrl + "user/email/" + email, this.httpOptions); // localhost:9999/user/email/{email}
+		} catch (error) {
+			console.log("ConfigService getUserByEmail() error: " + error);
+		}
 	}
 
 	// UPDATE
 	public updateUser(user: User) {
-		return this.http.put<User>(this.baseUrl + "user", user, this.httpOptions); // localhost:9999/user
+		try {
+			return this.http.put<User>(this.baseUrl + "user", user, this.httpOptions); // localhost:9999/user
+		} catch (error) {
+			console.log("ConfigService updateUser() error: " + error);
+		}
 	}
 
 	// DELETE
 	public deleteUserById(id: number) {
-		return this.http.delete<User>(this.baseUrl + "user/" + id, this.httpOptions) // localhost:9999/user/{id}
+		try {
+			return this.http.delete<User>(this.baseUrl + "user/" + id, this.httpOptions) // localhost:9999/user/{id}
+		} catch (error) {
+			console.log("ConfigService deleteUserById() error: " + error);
+		}
 	}
 
 	// LOGIN
 	public login(user: User): Observable<User> {
-		return this.http.post<User>(this.baseUrl + "user/verify", user); // localhost:9999/user/verify
+		try {
+			return this.http.post<User>(this.baseUrl + "user/verify", user); // localhost:9999/user/verify
+		} catch (error) {
+			console.log("ConfigService login() error: " + error);
+		}
 	}
 }
