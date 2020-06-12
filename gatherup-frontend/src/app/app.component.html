@@ -22,7 +22,7 @@
 					<a class="nav-link" [routerLink]="['/event']" routerLinkActive="router-link-active">Add Event</a>
 				</li>
 				<li class="nav-item" *ngIf="sessionKey">
-					<a class="nav-link" (click)="logOut()">Log Out</a>
+					<a class="nav-link" (click)="logOut()" [routerLink]="['/login']" routerLinkActive="router-link-active">Log Out</a>
 				</li>
 			</ul>
 		</div>
