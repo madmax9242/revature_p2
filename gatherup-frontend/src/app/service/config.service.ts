@@ -58,6 +58,6 @@ export class ConfigService {
 
 	// LOGIN
 	public login(user: User): Observable<User> {
-		return this.http.post<User>(this.baseUrl + "user/verify", user, this.httpOptions); // localhost:9999/user/login/
+		return this.http.post<User>(this.baseUrl + "user/verify", user); // localhost:9999/user/verify
 	}
 }

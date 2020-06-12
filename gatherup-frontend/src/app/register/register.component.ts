@@ -38,17 +38,13 @@ export class RegisterComponent implements OnInit {
 		// Sanity check
 		console.log(this.user);
 
-		if (this.user != null) {
-			// Saves data (email) to a session
-			sessionStorage.setItem("email", email);
-			let sessionKey = sessionStorage.getItem("email");
-			console.log("Stored key: " + sessionKey);
+		// Saves data (email) to a session
+		sessionStorage.setItem("email", email);
+		let sessionKey = sessionStorage.getItem("email");
+		console.log("Stored key: " + sessionKey);
 
-			// POSTs constructed user to endpoint and routes to the profile view
-			this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
-		} else {
-			alert("User already exists in the system.")
-		}
+		// POSTs constructed user to endpoint and routes to the profile view
+		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
 
 		// POSTs user to endpoint and assigns to a local user object
 		// this.service.createUser(this.user).subscribe(data => { this.user = data });

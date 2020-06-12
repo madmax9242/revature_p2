@@ -27,8 +27,6 @@ export class EventviewComponent implements OnInit {
 	ngOnInit(): void {
 		// Upon initialization, extracts all events from endpoint and assign to local event array
 		this.eventService.getAllEvents().subscribe(data => { this.events = data; });
-
-		// this.tempID = this.event.eventID;
 	}
 
 	isHidden = false;
@@ -42,7 +40,7 @@ export class EventviewComponent implements OnInit {
 		console.log("Current index's eventID: " + this.events[index].eventID);
 		this.eventService.deleteEventById(this.tempID).subscribe(data => { this.event = data; })
 
-		// Removes from local array (to hide from user)
+		// Removes from local array (to hide from user immediately)
 		this.events.splice(index, 1);
 	}
 }

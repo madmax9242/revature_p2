@@ -22,7 +22,7 @@ export class PasswordEncryptionService {
 			newPassword += backwards[tempIndex];
 
 		}
-		console.log(newPassword);
+		console.log("New password: " + newPassword);
 		return newPassword;
 	}
 }

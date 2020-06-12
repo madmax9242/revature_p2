@@ -13,12 +13,14 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 export class LoginComponent implements OnInit {
 
 	user: User;
+	tempUser: User;
 
 	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
 		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
+
 	}
 
 	login() {
@@ -27,13 +29,23 @@ export class LoginComponent implements OnInit {
 		// Constructs a user object
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
 		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		this.user = new User(undefined, email, this.encryptionService.encrypt(password), undefined, undefined, undefined);
+		// this.user = new User(undefined, email, this.encryptionService.encrypt(password), undefined, undefined, undefined);
+		this.user.email = email;
+		this.user.password = password;
 
 		// Sanity check
+		console.log("Sending user to BE: ");
 		console.log(this.user);
 
-		// Sends user object to backend and routes to event view
-		this.configService.login(this.user).subscribe(data => this.router.navigate(["/eventview"]));
+		this.configService.login(this.user).subscribe(data => { this.tempUser = data });
+		console.log("User received from DB: ");
+		console.log(this.tempUser);
+
+		if (this.tempUser != null) {
+			this.router.navigate(["/eventview"]);
+		} else {
+			alert("Invalid credentials!");
+		}
 	}
 }
 
@@ -44,3 +56,6 @@ export class LoginComponent implements OnInit {
 // } else {
 // 	alert("Invalid credentials!")
 // }
+
+// Sends user object to backend AND routes to event view
+// this.configService.login(this.user).subscribe(data => this.router.navigate(["/eventview"]));
