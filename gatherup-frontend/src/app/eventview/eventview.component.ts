@@ -38,7 +38,7 @@ export class EventviewComponent implements OnInit {
 		// Assigns to local variable and passes it as an argument to backend
 		this.tempID = this.events[index].eventID;
 		console.log("Current index's eventID: " + this.events[index].eventID);
-		this.eventService.deleteEventById(this.tempID).subscribe(data => { this.event = data; })
+		this.eventService.deleteEventById(this.tempID).subscribe(data => this.event = data)
 
 		// Removes from local array (to hide from user immediately)
 		this.events.splice(index, 1);

@@ -12,33 +12,30 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
 	user: User;
-	users: User[];
 
 	constructor(private router: Router, private configService: ConfigService) {
 	}
 
 	ngOnInit(): void {
-		// Upon initialization, extracts users from endpoint and inserts into user array
-		// this.configService.getAllUsers().subscribe(data => { this.users = data; });
-
+		// Automatically grabs key from sessionStorage
 		let sessionKeyValue = sessionStorage.getItem("email");
-		console.log("Stored key: " + sessionKeyValue);
-		this.configService.getUserByEmail(sessionKeyValue).subscribe(data => { this.user = data; });
+		console.log("Current sessionKeyValue: " + sessionKeyValue);
 
-		// TODO: GET request to backend using saved email; take that object and use it to populate profile
+		// Extracts user from endpoint and assigns to local object
+		this.configService.getUserByEmail(sessionKeyValue).subscribe(data => this.user = data);
 	}
 
 	logOut() {
-		console.log("logOut() button clicked.");
+		console.log("--- logOut() button clicked ---");
 
 		// Removes all saved data from session
 		let sessionKey = sessionStorage.getItem("email");
-		console.log("Stored key: " + sessionKey);
+		console.log("sessionKey: " + sessionKey);
 		sessionStorage.clear();
 
 		// Tests if key still remains
 		let clearedKey = sessionStorage.getItem("email");
-		console.log("Key after clearing: " + clearedKey);
+		console.log("clearedKey: " + clearedKey);
 
 		// Routes
 		this.router.navigate(["/"]);
