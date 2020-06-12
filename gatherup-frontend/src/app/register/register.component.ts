@@ -5,9 +5,6 @@ import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
 import { PasswordEncryptionService } from '../service/password-encryption.service';
 
-/* 
-	This component maps input values to a JavaScript object and passes it to Java via our service's CRUD methods
-*/
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
@@ -16,6 +13,7 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 export class RegisterComponent implements OnInit {
 
 	user: User;
+	tempUser: User;
 
 	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
 		this.user = new User(undefined, undefined, undefined, undefined, undefined, undefined);
@@ -25,28 +23,45 @@ export class RegisterComponent implements OnInit {
 	}
 
 	register() {
-		console.log("register() button pressed.");
-
-		// Constructs a user object based on input values
-		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
-		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
-		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
-		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
-		this.user = new User(undefined, email, this.encryptionService.encrypt(password), firstName, lastName, contact);
+		console.log("--- register() button pressed ---");
 
 		// Sanity check
+		console.log("TO BACKEND: ");
 		console.log(this.user);
 
-		// Saves data (email) to a session
-		sessionStorage.setItem("email", email);
-		let sessionKey = sessionStorage.getItem("email");
-		console.log("Stored key: " + sessionKey);
-
-		// POSTs constructed user to endpoint and routes to the profile view
+		// NO VALIDATION METHOD (WORKS)
 		this.configService.createUser(this.user).subscribe(data => this.router.navigate(["/profile"]));
 
-		// POSTs user to endpoint and assigns to a local user object
-		// this.service.createUser(this.user).subscribe(data => { this.user = data });
+		// // VALIDATION METHOD (NOT WORKING)
+		// this.configService.createUser(this.user).subscribe(data => this.tempUser = data);
+		// console.log("FROM DATABASE: ");
+		// console.log(this.tempUser);
+
+		// // Checks response object
+		// if (this.tempUser != null) {
+		// 	console.log("Successful login.");
+
+		// 	// Saves data (email) to a session
+		// 	sessionStorage.setItem("email", this.tempUser.email);
+		// 	let sessionKey = sessionStorage.getItem("email");
+		// 	console.log("Stored key: " + sessionKey);
+
+		// 	// Route
+		// 	this.router.navigate(["/profile"]);
+		// } else {
+		// 	console.log("Failed login.");
+		// 	alert("Invalid credentials!");
+		// }
 	}
 }
+
+// // Constructs a user object based on input values; NOT NEEDED ANYMORE B/C TWO-WAY BINDING
+// let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
+// let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+// let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
+// let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
+// let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
+// this.user = new User(undefined, email, password, firstName, lastName, contact);
+
+// POSTs user to endpoint and assigns to a local user object
+// this.service.createUser(this.user).subscribe(data => { this.user = data });
