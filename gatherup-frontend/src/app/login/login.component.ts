@@ -12,7 +12,7 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 })
 export class LoginComponent implements OnInit {
 
-	user: User = new User(0, "", "", "", "", "");
+	user: User = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 
 	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
 	}
@@ -71,8 +71,8 @@ export class LoginComponent implements OnInit {
 // // Sends user object to backend AND routes to event view
 // this.configService.login(this.user).subscribe(data => this.router.navigate(["/eventview"]));
 
-// // Optional error handling
+// Optional error handling
 // this.configService.login(this.user).subscribe({
-// 	next: data => this.tempUser = data,
+// 	next: data => this.user = data,
 // 	error: error => console.log("Error: ", error)
 // });

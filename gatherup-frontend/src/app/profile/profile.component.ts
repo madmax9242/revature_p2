@@ -13,17 +13,22 @@ export class ProfileComponent implements OnInit {
 
 	user: User;
 
+	sessionKey: string;
+
 	constructor(private router: Router, private configService: ConfigService) {
 	}
 
 	ngOnInit(): void {
+		// Grabs key from current session
+		this.sessionKey = sessionStorage.getItem("email");
+		console.log("Current sessionKey: " + this.sessionKey);
 
-		// Automatically grabs key from sessionStorage
-		let sessionKey = sessionStorage.getItem("email");
-		console.log("Current sessionKey: " + sessionKey);
-
-		// Extracts user from endpoint and assigns to local object
-		this.configService.getUserByEmail(sessionKey).subscribe(data => this.user = data);
+		// Validates if key exists and routes accordingly
+		if (this.sessionKey == null) {
+			window.location.assign("/login");
+		} else {
+			this.configService.getUserByEmail(this.sessionKey).subscribe(data => this.user = data);
+		}
 	}
 
 	logOut() {
@@ -42,16 +47,3 @@ export class ProfileComponent implements OnInit {
 		window.location.assign("/login")
 	}
 }
-
-// SESSIONSTORAGE
-// // Save data to sessionStorage
-// sessionStorage.setItem('key', 'value');
-
-// // Get saved data from sessionStorage
-// let data = sessionStorage.getItem('key');
-
-// // Remove saved data from sessionStorage
-// sessionStorage.removeItem('key');
-
-// // Remove all saved data from sessionStorage
-// sessionStorage.clear();

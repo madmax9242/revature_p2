@@ -19,20 +19,31 @@ export class EventviewComponent implements OnInit {
 
 	eventID: string;
 
+	sessionKey: string;
+
 	constructor(private eventService: EventService) {
 		this.event = new Event(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
-		this.eventService.getAllEvents().subscribe(data => {
-			console.log("ALL EVENTS FROM DATABASE: ");
-			for (let i in data) {
-				console.log(data[i]);
-				if (data[i].userEmail == sessionStorage.getItem("email")) {
-					this.events.push(data[i]);
+		// Grabs key from current session
+		this.sessionKey = sessionStorage.getItem("email");
+		console.log("Current sessionKey: " + this.sessionKey);
+
+		// Validates if key exists and routes accordingly
+		if (this.sessionKey == null) {
+			window.location.assign("/login");
+		} else {
+			this.eventService.getAllEvents().subscribe(data => {
+				console.log("ALL EVENTS FROM DATABASE: ");
+				for (let i in data) {
+					console.log(data[i]);
+					if (data[i].userEmail == sessionStorage.getItem("email")) {
+						this.events.push(data[i]);
+					}
 				}
-			}
-		})
+			})
+		}
 	}
 
 	isHidden = false;
