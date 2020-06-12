@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Event } from '../class/event/event';
+import { ConfigService } from '../service/config.service';
 import { EventService } from '../service/event.service';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-event',
@@ -14,11 +14,21 @@ export class EventComponent implements OnInit {
 
 	event: Event;
 
-	constructor(private router: Router, private eventService: EventService) {
+	sessionKey: string;
+
+	constructor(private router: Router, private configService: ConfigService, private eventService: EventService) {
 		this.event = new Event(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
+		// Grabs key from current session
+		this.sessionKey = sessionStorage.getItem("email");
+		console.log("Current sessionKey: " + this.sessionKey);
+
+		// Validates if key exists and routes accordingly
+		if (this.sessionKey == null) {
+			window.location.assign("/login");
+		}
 	}
 
 	// CREATE

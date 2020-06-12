@@ -12,7 +12,7 @@ import { PasswordEncryptionService } from '../service/password-encryption.servic
 })
 export class RegisterComponent implements OnInit {
 
-	user: User = new User(0, "", "", "", "", "");
+	user: User = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 
 	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
 	}
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
 		console.log("SENDING USER TO BACKEND: ");
 		console.log(user);
 
-		// Validates and route accordingly
+		// Validates and routes accordingly
 		this.configService.createUser(user).subscribe(data => {
 			console.log("USER FROM DATABASE: ");
 			console.log(data);
