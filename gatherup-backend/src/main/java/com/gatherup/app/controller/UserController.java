@@ -36,12 +36,12 @@ public class UserController {
 		System.out.println("From UserController: " + email);
 		return userService.getUserByEmail(email);
 	}
-	
+
 	@PostMapping("/user/login") // localhost:9999/user/login
 	public User login(@RequestBody User user) {
 		return userService.login(user.getEmail(), user.getPassword());
 	}
-	
+
 	@PostMapping("/user/verify")
 	public User verifyUser(@RequestBody User user) {
 		return userService.verifyUser(user);

@@ -93,7 +93,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User verifyUser(User user) {
+		System.out.println("REQUEST OBJECT: " + user);
+
 		User u1 = userDao.findUserByEmail(user.getEmail());
+		System.out.println("DB OBJECT: " + u1);
+
 		if (u1 != null && u1.getPassword().equals(user.getPassword())) {
 			System.out.println("Success");
 			return u1;
