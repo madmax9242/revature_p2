@@ -1,0 +1,2 @@
+2020-06-14 11:26:47,208 ERROR UserServiceImpl: 
+Attempted new user creation with preexisting value tgall4325@gmail.com

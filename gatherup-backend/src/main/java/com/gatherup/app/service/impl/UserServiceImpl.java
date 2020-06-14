@@ -3,6 +3,8 @@ package com.gatherup.app.service.impl;
 import com.gatherup.app.dao.UserDao;
 import com.gatherup.app.model.User;
 import com.gatherup.app.service.UserService;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,18 +16,24 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
-//	@Autowired
-//	private UserEmailDao userEmailDao;
 
+	//For information gathering
+	private Logger infoLogger = Logger.getLogger("InfoLogger");
+	//For error reporting
+	private Logger errorLogger = Logger.getLogger("ErrorLogger");
+	
 	// CREATE
 	@Override
 	public User createUser(User user) {
 		User retUsr = null;
 		if (getUserByEmail(user.getEmail()) == null) {
 			retUsr = userDao.save(user);
-			System.out.println("I am creating a new user");
+			infoLogger.info("Succussfully saved user " + 
+					user.getEmail() + "\nName: " + 
+					user.getFirstName() + " " + user.getLastName() + "\nContact: " + 
+					user.getContact());
 		} else {
-			System.out.println("I already exist");
+			errorLogger.error("Attempted new user creation with preexisting value " + user.getEmail());
 		}
 		return retUsr;
 	}
@@ -33,12 +41,17 @@ public class UserServiceImpl implements UserService {
 	// UPDATE
 	@Override
 	public User updateUser(User user) {
+		infoLogger.info("Succussfully updated user " + 
+				user.getEmail() + "\nName: " + 
+				user.getFirstName() + " " + user.getLastName() + "\nContact: " + 
+				user.getContact());
 		return userDao.save(user);
 	}
 
 	// DELETE
 	@Override
 	public void deleteUserById(int id) {
+		infoLogger.info("Successfully deleted user " + getUserById(id).getEmail());
 		userDao.deleteById(id);
 	}
 
@@ -75,14 +88,9 @@ public class UserServiceImpl implements UserService {
 		//Gets user by email
 		System.out.println("Email: " + email + " Password: " + password);
 		User usr = getUserByEmail(email);
-		if (usr == null) {
-			System.out.println("I am null");
-		} else {
-			System.out.println("I am here");
-		}
-		//System.out.println(usr.getFirstName());
 		if (!usr.getEmail().equals(null)) {
 			if (usr.getPassword().equals(password)) {
+				infoLogger.info(usr.getEmail() + " has just logged in.");
 				retUser = usr;
 			}
 		} else {
