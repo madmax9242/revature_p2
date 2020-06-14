@@ -1,0 +1,6 @@
+2020-06-14 11:26:22,904  INFO UserServiceImpl: 
+Succussfully saved user tgall4325@gmail.com
+Name: Tomas Gall
+Contact: 3072265986
+2020-06-14 11:26:57,709  INFO UserServiceImpl: 
+tgall4325@gmail.com has just logged in.
