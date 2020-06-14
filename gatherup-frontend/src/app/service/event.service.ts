@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NGXLogger } from 'ngx-logger';
 
 import { Event } from '../class/event/event';
 
@@ -24,7 +25,7 @@ export class EventService {
 	};
 
 	// Boots HttpClient upon creation
-	constructor(private http: HttpClient) {
+	constructor(private http: HttpClient, private loggy: NGXLogger) {
 		this.baseUrl = "http://localhost:9999/"; // development endpoint
 		// this.baseUrl = "http://ec2-18-217-122-210.us-east-2.compute.amazonaws.com:9999/"; // production endpoint
 	}
@@ -34,7 +35,7 @@ export class EventService {
 		try {
 			return this.http.post<Event>(this.baseUrl + "event", event, this.httpOptions); // localhost:9999/event
 		} catch (error) {
-			console.log("EventService createEvent() error: " + error);
+			this.loggy.error("EventService createEvent() error: " + error)
 		}
 	}
 
@@ -43,7 +44,7 @@ export class EventService {
 		try {
 			return this.http.get<Event[]>(this.baseUrl + "event/all", this.httpOptions); // localhost:9999/event/all
 		} catch (error) {
-			console.log("EventService getAllEvents() error: " + error);
+			this.loggy.error("EventService getAllEvents() error: " + error)
 		}
 	}
 
@@ -51,7 +52,7 @@ export class EventService {
 		try {
 			return this.http.get<Event>(this.baseUrl + "event/" + id); // localhost:9999/event/{id}
 		} catch (error) {
-			console.log("EventService getEventById() error: " + error);
+			this.loggy.error("EventService getEventById() error: " + error)
 		}
 	}
 
@@ -60,7 +61,7 @@ export class EventService {
 		try {
 			return this.http.put<Event>(this.baseUrl + "event", event); // localhost:9999/event
 		} catch (error) {
-			console.log("EventService updateEvent() error: " + error);
+			this.loggy.error("EventService updateEvent() error: " + error)
 		}
 	}
 
@@ -69,7 +70,7 @@ export class EventService {
 		try {
 			return this.http.delete<Event>(this.baseUrl + "/event/" + id) // localhost:9999/event/{id}
 		} catch (error) {
-			console.log("EventService deleteEventById() error: " + error);
+			this.loggy.error("EventService deleteEventById() error: " + error)
 		}
 	}
 }

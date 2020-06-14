@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 
 import { User } from '../class/user/user';
 import { ConfigService } from '../service/config.service';
@@ -14,14 +15,14 @@ export class LoginComponent implements OnInit {
 
 	user: User = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 
-	constructor(private router: Router, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
+	constructor(private router: Router, private loggy: NGXLogger, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
 	}
 
 	ngOnInit(): void {
 	}
 
 	login() {
-		console.log("--- login() button pressed ---");
+		this.loggy.info("--- login() button pressed ---");
 
 		// Constructs a user object based on input values
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
@@ -29,25 +30,25 @@ export class LoginComponent implements OnInit {
 		let user: User = new User(undefined, email, password, undefined, undefined, undefined);
 
 		// Sanity check
-		console.log("SENDING USER TO BACKEND: ");
-		console.log(user);
+		this.loggy.info("SENDING USER TO BACKEND: ");
+		this.loggy.info(user);
 
 		// Validates and routes accordingly
 		this.configService.login(user).subscribe(data => {
-			console.log("USER FROM DATABASE: ");
-			console.log(data);
+			this.loggy.info("USER FROM DATABASE: ");
+			this.loggy.info(data);
 			if (data != null) {
-				console.log("Successful login.");
+				this.loggy.info("Successful login.");
 
 				// Saves data (email) to a session
 				sessionStorage.setItem("email", email);
 				let sessionKey = sessionStorage.getItem("email");
-				console.log("Stored key: " + sessionKey);
+				this.loggy.info("Stored key: " + sessionKey);
 
 				// Route
 				window.location.assign("/eventview")
 			} else {
-				console.log("Failed login.");
+				this.loggy.error("Failed login.");
 				alert("Invalid credentials!");
 			}
 		});

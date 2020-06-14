@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
+
 // import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 /*
@@ -9,7 +11,7 @@ import { Injectable } from '@angular/core';
 })
 export class PasswordEncryptionService {
 
-	constructor() { }
+	constructor(private loggy: NGXLogger) { }
 
 	encrypt(password: string) {
 		var newPassword: string = "";
@@ -22,7 +24,7 @@ export class PasswordEncryptionService {
 			newPassword += backwards[tempIndex];
 
 		}
-		console.log("New password: " + newPassword);
+		this.loggy.info("New password: " + newPassword);
 		return newPassword;
 	}
 }

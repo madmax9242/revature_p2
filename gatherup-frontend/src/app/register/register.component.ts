@@ -16,11 +16,12 @@ export class RegisterComponent implements OnInit {
 	user: User = new User(undefined, undefined, undefined, undefined, undefined, undefined);
 
 	constructor(private router: Router, private loggy: NGXLogger, private configService: ConfigService, private encryptionService: PasswordEncryptionService) {
-		this.loggy.trace("w0w a TRACE message.");
-		this.loggy.debug("w0w a DEBUG message.");
-		this.loggy.info("w0w an INFO message.");
-		this.loggy.log("w0w a LOG message.");
-		this.loggy.warn("w0w a WARN message.");
+		// TESTING NGXLOGGER MESSAGES
+		// this.loggy.trace("w0w a TRACE message.");
+		// this.loggy.debug("w0w a DEBUG message.");
+		// this.loggy.info("w0w an INFO message.");
+		// this.loggy.log("w0w a LOG message.");
+		// this.loggy.warn("w0w a WARN message.");
 		// this.loggy.error("w0w an ERROR message.");
 		// this.loggy.fatal("w0w a FATAL message.");
 	}
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
 	}
 
 	register() {
-		console.log("--- register() button pressed ---");
+		this.loggy.info("--- register() button pressed ---");
 
 		// Constructs a user object based on input values
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
@@ -40,25 +41,25 @@ export class RegisterComponent implements OnInit {
 		let user: User = new User(undefined, email, password, firstName, lastName, contact);
 
 		// Sanity check
-		console.log("SENDING USER TO BACKEND: ");
-		console.log(user);
+		this.loggy.info("SENDING USER TO BACKEND: ");
+		this.loggy.info(user);
 
 		// Validates and routes accordingly
 		this.configService.createUser(user).subscribe(data => {
-			console.log("USER FROM DATABASE: ");
-			console.log(data);
+			this.loggy.info("USER FROM DATABASE: ");
+			this.loggy.info(data);
 			if (data != null) {
-				console.log("Registration success.");
+				this.loggy.info("Registration success.");
 
 				// Saves data (email) to a session
 				sessionStorage.setItem("email", email);
 				let sessionKey = sessionStorage.getItem("email");
-				console.log("Stored key: " + sessionKey);
+				this.loggy.info("Stored key: " + sessionKey);
 
 				// Route
 				window.location.assign("/profile")
 			} else {
-				console.log("Registration failed.");
+				this.loggy.error("Registration failed.");
 				alert("User already exists. Try logging in instead?");
 			}
 		});
