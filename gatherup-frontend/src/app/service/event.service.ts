@@ -25,7 +25,8 @@ export class EventService {
 
 	// Boots HttpClient upon creation
 	constructor(private http: HttpClient) {
-		this.baseUrl = "http://localhost:9999/"; // sets baseUrl to the "home" endpoint
+		this.baseUrl = "http://localhost:9999/"; // development endpoint
+		// this.baseUrl = "http://ec2-18-217-122-210.us-east-2.compute.amazonaws.com:9999/"; // production endpoint
 	}
 
 	// CREATE

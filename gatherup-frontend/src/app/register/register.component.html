@@ -19,9 +19,7 @@
 									<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1 p-1 text-center text-muted">
 										<div *ngIf="email.errors.required">Email is required!</div>
 										<!-- PatternValidator -->
-										<div *ngIf="email.errors?.pattern">
-											Email must be in [email@domain.info] format.
-										</div>
+										<div *ngIf="email.errors?.pattern">Email must be in [email@domain.info] format.</div>
 									</div>
 								</div>
 								<div class="form-group">
@@ -29,37 +27,27 @@
 									<div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1 p-1 text-center text-muted">
 										<div *ngIf="password.errors?.required">Password is required!</div>
 										<!-- PatternValidator -->
-										<div *ngIf="password.errors?.pattern">
-											Password must be at least 8 characters long with at least one uppercase, one lowercase and one number.
-										</div>
+										<div *ngIf="password.errors?.pattern">Password must be at least 8 characters long with at least one uppercase, one lowercase and one number.</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<input [(ngModel)]="user.firstName" #firstName="ngModel" name="inputFirstName" id="inputFirstName" type="text" placeholder="First name" class="form-control rounded-pill border-0 shadow px-4" required>
 									<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1 p-1 text-center text-muted">
-										<div *ngIf="firstName.errors.required">
-											First name is required!
-										</div>
+										<div *ngIf="firstName.errors.required">First name is required!</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<input [(ngModel)]="user.lastName" #lastName="ngModel" name="inputLastName" id="inputLastName" type="text" placeholder="Last name" class="form-control rounded-pill border-0 shadow px-4" required>
 									<div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1 p-1 text-center text-muted">
-										<div *ngIf="lastName.errors.required">
-											Last name is required!
-										</div>
+										<div *ngIf="lastName.errors.required">Last name is required!</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<input [(ngModel)]="user.contact" #contact="ngModel" name="inputContact" id="inputContact" type="text" placeholder="Phone number" class="form-control rounded-pill border-0 shadow px-4" pattern="[0-9]{10}" required>
 									<div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="alert alert-danger rounded-pill border-0 shadow m-1 p-1 text-center text-muted">
-										<div *ngIf="contact.errors.required">
-											Phone number is required!
-										</div>
+										<div *ngIf="contact.errors.required">Phone number is required!</div>
 										<!-- PatternValidator -->
-										<div *ngIf="contact.errors?.pattern">
-											Phone number must be in 10-digit format without hyphens.
-										</div>
+										<div *ngIf="contact.errors?.pattern">Phone number must be in 10-digit format without hyphens.</div>
 									</div>
 								</div>
 
