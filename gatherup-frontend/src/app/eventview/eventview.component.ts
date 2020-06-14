@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../service/event.service';
 import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 
 import { Event } from '../class/event/event';
+import { EventService } from '../service/event.service';
 
 @Component({
 	selector: 'app-eventview',
@@ -13,31 +14,29 @@ export class EventviewComponent implements OnInit {
 
 	event: Event;
 	events: Event[] = [];
-
+	eventID: string;
 	tempID: any;
 	tempArray: Event[];
 
-	eventID: string;
-
 	sessionKey: string;
 
-	constructor(private eventService: EventService) {
+	constructor(private router: Router, private loggy: NGXLogger, private eventService: EventService) {
 		this.event = new Event(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
 	}
 
 	ngOnInit(): void {
 		// Grabs key from current session
 		this.sessionKey = sessionStorage.getItem("email");
-		console.log("Current sessionKey: " + this.sessionKey);
+		this.loggy.info("Current sessionKeyL " + this.sessionKey);
 
 		// Validates if key exists and routes accordingly
 		if (this.sessionKey == null) {
 			window.location.assign("/login");
 		} else {
 			this.eventService.getAllEvents().subscribe(data => {
-				console.log("ALL EVENTS FROM DATABASE: ");
+				this.loggy.info("ALL EVENTS FROM DATABASE: ");
 				for (let i in data) {
-					console.log(data[i]);
+					this.loggy.info(data[i]);
 					if (data[i].userEmail == sessionStorage.getItem("email")) {
 						this.events.push(data[i]);
 					}
@@ -48,13 +47,13 @@ export class EventviewComponent implements OnInit {
 
 	isHidden = false;
 	deleteEvent(index: number) {
-		// Note: be careful ordering things around in here; may break method
+		// NOTE: be careful ordering things around in here; may break method
 
-		console.log("test() clicked.");
+		this.loggy.info("--- deleteEvent() clicked ---");
 
 		// Assigns to local variable and passes it as an argument to backend
 		this.tempID = this.events[index].eventID;
-		console.log("Current index's eventID: " + this.events[index].eventID);
+		this.loggy.info("Current index's eventID: " + this.events[index].eventID);
 		this.eventService.deleteEventById(this.tempID).subscribe(data => this.event = data)
 
 		// Removes from local array (to hide from user immediately)
