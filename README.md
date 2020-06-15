@@ -34,16 +34,16 @@ Installation
 ------------
 
 Install revature_p2 by running:
-    - Gatherup-frontend
-        npm install
-        ng serve
+    - Gatherup-frontend-
+
+        npm install in the gatherup-backend directory. ng serve. 
         Open a web browser tab to localhost:4200
-    - gatherup-back
-        Maven update project
-        Run as.. Spring Boot App
-        Hibernate will create a temporary H2 database schema on server boot up
+    
+    - gatherup-back-
+
+        Maven update project. Run as.. Spring Boot App. Hibernate will create a temporary H2 database schema on server boot up. 
         If you want to use your own SQL database, edit the application.properties file in 
-        gatherup-backend/src/main/resources
+        gatherup-backend/src/main/resources   
         We included dependencies for Oracle and MySQL in the pom.xml file
         
 
