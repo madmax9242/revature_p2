@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
 		let firstName = (<HTMLInputElement>document.getElementById("inputFirstName")).value;
 		let lastName = (<HTMLInputElement>document.getElementById("inputLastName")).value;
 		let contact = (<HTMLInputElement>document.getElementById("inputContact")).value;
-		let user: User = new User(undefined, email, password, firstName, lastName, contact);
+		let user: User = new User(undefined, email, this.encryptionService.encrypt(password), firstName, lastName, contact);
 
 		// Sanity check
 		this.loggy.info("SENDING USER TO BACKEND: ");
