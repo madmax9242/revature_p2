@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 		// Constructs a user object based on input values
 		let email = (<HTMLInputElement>document.getElementById("inputEmail")).value;
 		let password = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-		let user: User = new User(undefined, email, password, undefined, undefined, undefined);
+		let user: User = new User(undefined, email, this.encryptionService.encrypt(password), undefined, undefined, undefined);
 
 		// Sanity check
 		this.loggy.info("SENDING USER TO BACKEND: ");

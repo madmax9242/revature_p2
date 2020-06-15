@@ -84,4 +84,17 @@ public class Event {
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
 	}
+
+	@Override
+	public String toString() {
+		return "Event {" +
+				"eventID=" + eventID +
+				", userEmail='" + userEmail + '\'' +
+				", eventName='" + eventName + '\'' +
+				", eventDescription='" + eventDescription + '\'' +
+				", eventLocation='" + eventLocation + '\'' +
+				", dateTime='" + dateTime + '\'' +
+				", eventType='" + eventType + '\'' +
+				'}';
+	}
 }

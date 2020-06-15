@@ -3,7 +3,6 @@ package com.gatherup.app.service.impl;
 import com.gatherup.app.dao.EventDao;
 import com.gatherup.app.model.Event;
 import com.gatherup.app.service.EventService;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +17,10 @@ public class EventServiceImpl implements EventService {
 	private EventDao eventDao;
 
 	//For information gathering
-	private Logger infoLogger = Logger.getLogger("InfoLogger");
+	private final Logger infoLogger = Logger.getLogger("InfoLogger");
 	//For error reporting
 	private Logger errorLogger = Logger.getLogger("ErrorLogger");
-		
+
 	// CREATE
 	@Override
 	public Event createEvent(Event event) {

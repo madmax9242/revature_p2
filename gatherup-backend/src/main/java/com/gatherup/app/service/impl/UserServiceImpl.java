@@ -3,7 +3,6 @@ package com.gatherup.app.service.impl;
 import com.gatherup.app.dao.UserDao;
 import com.gatherup.app.model.User;
 import com.gatherup.app.service.UserService;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,19 +17,19 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	//For information gathering
-	private Logger infoLogger = Logger.getLogger("InfoLogger");
+	private final Logger infoLogger = Logger.getLogger("InfoLogger");
 	//For error reporting
-	private Logger errorLogger = Logger.getLogger("ErrorLogger");
-	
+	private final Logger errorLogger = Logger.getLogger("ErrorLogger");
+
 	// CREATE
 	@Override
 	public User createUser(User user) {
 		User retUsr = null;
 		if (getUserByEmail(user.getEmail()) == null) {
 			retUsr = userDao.save(user);
-			infoLogger.info("Succussfully saved user " + 
-					user.getEmail() + "\nName: " + 
-					user.getFirstName() + " " + user.getLastName() + "\nContact: " + 
+			infoLogger.info("Succussfully saved user " +
+					user.getEmail() + "\nName: " +
+					user.getFirstName() + " " + user.getLastName() + "\nContact: " +
 					user.getContact());
 		} else {
 			errorLogger.error("Attempted new user creation with preexisting value " + user.getEmail());
@@ -41,9 +40,9 @@ public class UserServiceImpl implements UserService {
 	// UPDATE
 	@Override
 	public User updateUser(User user) {
-		infoLogger.info("Succussfully updated user " + 
-				user.getEmail() + "\nName: " + 
-				user.getFirstName() + " " + user.getLastName() + "\nContact: " + 
+		infoLogger.info("Succussfully updated user " +
+				user.getEmail() + "\nName: " +
+				user.getFirstName() + " " + user.getLastName() + "\nContact: " +
 				user.getContact());
 		return userDao.save(user);
 	}
