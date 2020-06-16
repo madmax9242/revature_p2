@@ -14,10 +14,12 @@ Dave Wroblewski
 
 Technology Versions
 --------
-- Java 1.8
+- Java EE 1.8
 - Spring Boot
 - Angular CLI 9.1.6
 - Node 12.16.3
+- Log4j 1.2.17
+- JUnit vintage
 
 Dependencies Implemented
 -------------------
